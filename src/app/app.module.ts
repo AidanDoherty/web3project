@@ -16,6 +16,7 @@ import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
+import { OrderModule } from 'ngx-order-pipe';
 @NgModule({
   declarations: [
     
@@ -29,7 +30,7 @@ import { environment } from 'src/environments/environment';
     AuctionComponent
   ],
   imports: [
-   
+    OrderModule ,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase,),
     BrowserAnimationsModule,

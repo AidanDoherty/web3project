@@ -5,3 +5,10 @@ body{
 p.message{
     font-size: 32px;
 }
+.space 
+{
+   margin-left:200px;
+}
+td{
+    padding-left: 30px;
+}
