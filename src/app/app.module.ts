@@ -17,6 +17,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { OrderModule } from 'ngx-order-pipe';
+
 @NgModule({
   declarations: [
     
@@ -44,7 +45,7 @@ import { OrderModule } from 'ngx-order-pipe';
       { path: 'book', component: BookComponent }
     ])
   ],
-  exports: [ RouterModule ],
+  exports: [ RouterModule, ],
   providers: [AfService],
   bootstrap: [AppComponent]
 })
