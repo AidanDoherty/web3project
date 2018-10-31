@@ -3,6 +3,7 @@ import {AngularFireAuth} from "angularfire2/auth";
 import * as firebase from 'firebase/app';
 import { AfService} from '../providers/af.service'
 import { Observable } from 'rxjs';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +15,7 @@ export class NavbarComponent implements OnInit {
   authenticated:boolean = false;
  
   constructor(public AfService: AfService,
-   private afAuth: AngularFireAuth,) { 
+   private afAuth: AngularFireAuth,private router: Router) { 
      this.afAuth.authState.subscribe(
        (auth) =>{
          if (auth !=null){
@@ -39,5 +40,6 @@ logout(){
   this.AfService.logout();
   console.log(this.authenticated)
   this.authenticated = false;
+  this.router.navigate(['/login']);
 }
 }

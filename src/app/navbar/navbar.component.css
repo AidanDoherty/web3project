@@ -1,11 +1,12 @@
-img {
+.userimg {
     border-radius: 50%;
     width:50px;
 }
 .dropbtn {
   
     color: white;
-   
+    border-radius: 50%;
+    width:50px;
     font-size: 16px;
     border: none;
 }
