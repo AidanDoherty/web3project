@@ -1,0 +1,8 @@
+.panel-custom-blue {
+    border-color: black;
+}
+.panel-custom-blue > .panel-heading {
+    background: blue; 
+    color: #ffffff;
+    border-color: black;
+}
