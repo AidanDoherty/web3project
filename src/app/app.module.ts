@@ -34,8 +34,10 @@ import { OrderModule } from 'ngx-order-pipe';
     OrderModule ,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase,),
+    AngularFirestoreModule,
     BrowserAnimationsModule,
     BrowserModule,
+    HttpClientModule,
 
      RouterModule.forRoot([
       { path: 'login', component: LoginComponent },

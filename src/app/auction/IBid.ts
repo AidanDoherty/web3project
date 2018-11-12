@@ -1,6 +1,6 @@
 class Ibid {
-    bidUserName:string;
     bidID:number;
+    bidUserID:number;
     bidAmount:number;
 }
 

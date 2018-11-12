@@ -10,15 +10,15 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>UserName</th>
-      <th>Ammount</th>
+      <th>UserID</th>
+      <th>Amount</th>
     </tr>
   </thead>
   <tbody>
-  <tr  *ngFor="let bid of bids|orderBy: order">
+  <tr  *ngFor="let bid of bids|async">
   
       <td>{{bid.bidID}}</td>
-      <td>{{bid.bidUserName}}</td>
+      <td>{{bid.bidUserID}}</td>
       <td>{{bid.bidAmount}}</td>
     
   </tr>
