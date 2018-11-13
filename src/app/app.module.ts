@@ -10,14 +10,15 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule, Routes } from '@angular/router';
 import { AuctionComponent } from './auction/auction.component';
-import { HttpClientModule} from '@angular/common/http'
+import { HttpClientModule, HttpClient } from '@angular/common/http'
 import { AfService, } from './providers/af.service';
 import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { OrderModule } from 'ngx-order-pipe';
 import { AddbookComponent } from './addbook/addbook.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,9 @@ import { AddbookComponent } from './addbook/addbook.component';
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase,),
     BrowserAnimationsModule,
+    FormsModule,
     BrowserModule,
+    HttpClientModule,
 
      RouterModule.forRoot([
       { path: 'login', component: LoginComponent },
@@ -48,7 +51,7 @@ import { AddbookComponent } from './addbook/addbook.component';
     ])
   ],
   exports: [ RouterModule, ],
-  providers: [AfService],
+  providers: [AfService,HttpClientModule,AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
