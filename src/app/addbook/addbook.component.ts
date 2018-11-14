@@ -25,8 +25,9 @@ export class AddbookComponent implements OnInit {
     return false;
   }
   addbookstringfromtb(evt):boolean{
-    this.title =evt;
+    this.bookname =evt;
     return false;
+    
   }
   addbook(): void {
     let book: Ibook = {

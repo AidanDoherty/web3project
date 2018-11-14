@@ -23,7 +23,7 @@ export class DisplayBookComponent implements OnInit {
 
   selectbook(title):boolean{
     this.AddbookinfoEE.emit(title);
-    alert("working")
+    alert(title)
     return false;
   }
 

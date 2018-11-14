@@ -1,7 +1,13 @@
 <div *ngIf="bookdata" >
   <td class="googlebook" *ngFor="let exbook of bookdata.items">
+    <div class="title"> 
       {{exbook.volumeInfo.title}}
-
+    </div>
+     
+      
+<img [src]="exbook.volumeInfo.imageLinks.thumbnail"  width="100px" height="150px" >
+<button type="button" (click)="selectbook(exbook.volumeInfo.title)"class="btn btn-primary">Use </button>
   </td>
-  
+ 
+
 </div>

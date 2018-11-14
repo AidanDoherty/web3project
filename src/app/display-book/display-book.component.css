@@ -1,6 +1,11 @@
 .googlebook{
     font-size: 14px;
-    padding:20px;
+    padding: 40px;
     border: solid;
     border-color: grey;
+    text-align: center;
+    
+}
+.title{
+padding:20px;
 }

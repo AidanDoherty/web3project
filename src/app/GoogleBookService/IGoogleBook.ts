@@ -6,7 +6,9 @@ export interface IItems{
 }
 export interface IvolumeInfo{
   title:string;
+  publisher:string;
+  imageLinks:imageLinks;
 }
-export interface Iurl{
-    thumnail:string;
+export interface imageLinks{
+    thumbnail:string;
 }
