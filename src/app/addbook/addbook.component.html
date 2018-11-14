@@ -3,10 +3,11 @@
         <div class="form-group row">
             <div class="col-3">
                 <label for="ex1">Search:</label>
-                <input class="form-control" id="ex1" placeholder="Enter Book Title" type="text">
+                <input class="form-control" id="title" [(ngModel)]="title" name="title" placeholder="Enter Book Title" type="text">
             </div>
         </div>
-        <button class="btn">Search</button>
+       <button (click)="showbook()">Find</button>
+        <app-display-book *ngIf="showdisplaybook"(AddbookinfoEE)="addbookstringfromtb($event)" [title]='title'></app-display-book>
     </div>
     <div class="padding"></div>
 

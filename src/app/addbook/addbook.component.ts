@@ -15,11 +15,19 @@ export class AddbookComponent implements OnInit {
   reserve: number;
   description: string;
   imgsrc: string;
-  
+  showdisplaybook: boolean;
+  title:string;
   ngOnInit() {
   }
 
-
+  showbook(): boolean {
+    this.showdisplaybook = !this.showdisplaybook;
+    return false;
+  }
+  addbookstringfromtb(evt):boolean{
+    this.title =evt;
+    return false;
+  }
   addbook(): void {
     let book: Ibook = {
       bookId: this.bookId,
@@ -29,7 +37,7 @@ export class AddbookComponent implements OnInit {
       description: this.description,
       imgsrc: this.imgsrc
 
-    
+
     }
     console.log(book)
     this._BookserviceService.addbook(book);

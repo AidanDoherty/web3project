@@ -19,6 +19,7 @@ import { environment } from 'src/environments/environment';
 import { OrderModule } from 'ngx-order-pipe';
 import { AddbookComponent } from './addbook/addbook.component';
 import { FormsModule } from '@angular/forms';
+import { DisplayBookComponent } from './display-book/display-book.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     RegisterComponent,
     AuctionComponent,
-    AddbookComponent
+    AddbookComponent,
+    DisplayBookComponent
   ],
   imports: [
     OrderModule ,
