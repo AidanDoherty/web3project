@@ -5,26 +5,7 @@
     height="30px">
 
 </div>
-<table class="table">
-<div class="table">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>UserID</th>
-      <th>Amount</th>
-    </tr>
-  </thead>
-  <tbody>
-  <tr  *ngFor="let bid of bids|async">
-  
-      <td>{{bid.bidID}}</td>
-      <td>{{bid.bidUserID}}</td>
-      <td>{{bid.bidAmount}}</td>
-    
-  </tr>
-</tbody>
-</div>
-</table>
+<app-bid></app-bid>
 
 <div class="form-group">
   <label for="bd">Bid:</label>

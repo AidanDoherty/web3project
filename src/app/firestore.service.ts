@@ -9,34 +9,24 @@ import {map} from 'rxjs/operators';
 })
 export class FirestoreService {
 
-  bidsCollection:AngularFirestoreCollection<Ibid>;
+  bidCollection: AngularFirestoreCollection<Ibid>;
+  Bids: Observable<Ibid[]>;
 
-  bids:Observable<Ibid[]>;
-
-  allBids:Ibid[];
+  allbids: Ibid[];
   errorMessage:string;
 
-  constructor(private _http:HttpClient,private _afs:AngularFirestore) {
-    this.bidsCollection=_afs.collection<Ibid>("bids");
-   }
+  constructor(private _http: HttpClient, private _afs:AngularFirestore){ 
+    this.bidCollection = _afs.collection<Ibid>("bids");
+  }
 
-   getBids():Observable<Ibid[]>{
-     this.bidsCollection.snapshotChanges().pipe(
-       map(actions=> actions.map(a=>{
-         const data = a.payload.doc.data() as Ibid;
-         const id = a.payload.doc.id;
-         return {id,...data};
-       }))
-     );
-     return this.bids;
-   }
+ getbids():Observable<Ibid[]>{
+   this.Bids = this.bidCollection.valueChanges();
+   this.Bids.subscribe(data => console.log("getBids()" + data));
+   return this.Bids
+   
+ }
+ addbid(bid:Ibid): void{
+   this.bidCollection.add(bid);
+ }
 
-   addBid(bid:Ibid):void{
-     this.bidsCollection.add(bid);
-   }
-   deleteBid(id:string):void{
-     this.bidsCollection.doc(id).delete()
-     .catch(error=>{console.log("delete bid error"+error);})
-     .then(()=>console.log('deleteBid:id='+id));
-   }
 }

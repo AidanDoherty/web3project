@@ -17,6 +17,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { OrderModule } from 'ngx-order-pipe';
+import { BidComponent } from './bid/bid.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { OrderModule } from 'ngx-order-pipe';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    AuctionComponent
+    AuctionComponent,
+    BidComponent
   ],
   imports: [
     OrderModule ,
