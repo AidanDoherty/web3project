@@ -3,6 +3,7 @@ import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/fire
 import { Observable } from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
+import {Ibid} from './auction/IBid'
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class FirestoreService {
   errorMessage:string;
 
   constructor(private _http: HttpClient, private _afs:AngularFirestore){ 
-    this.bidCollection = _afs.collection<Ibid>("bids");
+    this.bidCollection = _afs.collection<Ibid>("Bids");
   }
 
  getbids():Observable<Ibid[]>{
