@@ -1,44 +1,50 @@
 <img src="/src/assets/logo.jpg" width="100px">
 
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand">BookActuion.com</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <a class="navbar-brand" href="#">BookActuion.com</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li *ngIf="authenticated" class="nav-item active">
+      <li class="nav-item active">
         <a class="nav-link" [routerLink]="['/home']">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li *ngIf="authenticated" class="nav-item">
+      <li  class="nav-item">
         <a class="nav-link" [routerLink]="['/profile']"> Profile</a>
       </li>
-      <li *ngIf="authenticated" class="nav-item">
+      <li class="nav-item">
         <a class="nav-link" [routerLink]="['/auction']"> Curent Item for Sale</a>
       </li>
-      <li *ngIf="authenticated" class="nav-item">
+      <li class="nav-item">
         <a class="nav-link" [routerLink]="['/book']"> Add a book for sale</a>
       </li>
+
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+
+      <div class="dropdown">
+        <div *ngIf="AfService.user | async as user">
+          <p>Hello there!, {{user.displayName}} <img class="dropbtn" [src]="user.photoURL" alt="Avatar">
+          </p>
+        </div>
+    
+       <form class="dropdown-content">
+          <a *ngIf="authenticated" class="form-control mr-sm-2" (click)="logout()"> Log Out</a>
+     
+    
+    
+          <a *ngIf="!authenticated" class="form-control mr-sm-2" [routerLink]="['/login']"> Log In</a>
+        </form>
+        </div>
+
     </ul>
-
-    <div class="dropdown">
-    <div *ngIf="AfService.user | async as user">
-      <p>Hello there!, {{user.displayName}} <img class="dropbtn" [src]="user.photoURL" alt="Avatar">
-      </p>
-    </div>
-
-   <form class="dropdown-content">
-      <a *ngIf="authenticated" class="form-control mr-sm-2" (click)="logout()"> Log Out</a>
- 
-
-
-      <a *ngIf="!authenticated" class="form-control mr-sm-2" [routerLink]="['/login']"> Log In</a>
+    <form class="form-inline my-2 my-lg-0">
+      <button class="btn btn-outline-success my-2 my-sm-0" *ngIf="!authenticated" routerLink="/login">Log In</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" *ngIf="authenticated" (click)="onLogout()">Log Out</button>
     </form>
-    </div>
-</div>
-
-
-
+  </div>
 </nav>

@@ -17,6 +17,20 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { OrderModule } from 'ngx-order-pipe';
+import { AuthGuard } from './service/auth.guard';
+import { AuthService } from './service/auth.service';
+import { NotificationService } from './service/notification.service';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
+
+export const rootRouterConfig: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'auction', component: AuctionComponent}
+];
 
 @NgModule({
   declarations: [
@@ -31,22 +45,17 @@ import { OrderModule } from 'ngx-order-pipe';
     AuctionComponent
   ],
   imports: [
+    FormsModule, 
+    ReactiveFormsModule,
     OrderModule ,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase,),
     BrowserAnimationsModule,
     BrowserModule,
-
-     RouterModule.forRoot([
-      { path: 'login', component: LoginComponent },
-      { path: 'home', component: HomeComponent },
-      { path: 'profile', component: ProfileComponent },
-      { path: 'auction', component: AuctionComponent },
-      { path: 'book', component: BookComponent }
-    ])
+    RouterModule.forRoot(rootRouterConfig)
   ],
   exports: [ RouterModule, ],
-  providers: [AfService],
+  providers: [AfService, AuthService, AuthGuard, NotificationService, AngularFireAuth],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
