@@ -29,11 +29,11 @@ import { SignupComponent } from './signup/signup.component';
 export const rootRouterConfig: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'addbook', component: AddbookComponent },
-  { path: 'home', component: HomeComponent },
+  { path: 'addbook', component: AddbookComponent,canActivate: [AuthGuard] },
+  { path: 'home', component: HomeComponent,canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'auction', component: AuctionComponent},
-  { path: 'signup', component: SignupComponent}
+  { path: 'auction', component: AuctionComponent,canActivate: [AuthGuard]},
+  { path: 'signup', component: SignupComponent,canActivate: [AuthGuard]}
 ];
 
 
