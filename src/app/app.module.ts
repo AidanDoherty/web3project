@@ -16,6 +16,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { OrderModule } from 'ngx-order-pipe';
+
+import { BidComponent } from './bid/bid.component';
 import { AuthGuard } from './service/auth.guard';
 import { AuthService } from './service/auth.service';
 import { NotificationService } from './service/notification.service';
@@ -31,6 +33,7 @@ export const rootRouterConfig: Routes = [
   { path: 'auction', component: AuctionComponent}
 ];
 
+
 @NgModule({
   declarations: [
     
@@ -41,7 +44,8 @@ export const rootRouterConfig: Routes = [
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    AuctionComponent
+    AuctionComponent,
+    BidComponent
   ],
   imports: [
     FormsModule, 
@@ -49,9 +53,11 @@ export const rootRouterConfig: Routes = [
     OrderModule ,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase,),
+    AngularFirestoreModule,
     BrowserAnimationsModule,
     BrowserModule,
     RouterModule.forRoot(rootRouterConfig)
+
   ],
   exports: [ RouterModule, ],
   providers: [ AuthService, AuthGuard, NotificationService, AngularFireAuth],
