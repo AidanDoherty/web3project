@@ -10,14 +10,12 @@ import { LoginComponent } from './login/login.component';
 import { RouterModule, Routes } from '@angular/router';
 import { AuctionComponent } from './auction/auction.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http'
-import { AfService, } from './providers/af.service';
 import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { OrderModule } from 'ngx-order-pipe';
 import { AddbookComponent } from './addbook/addbook.component';
-import { FormsModule } from '@angular/forms';
 import { DisplayBookComponent } from './display-book/display-book.component';
 
 import { BidComponent } from './bid/bid.component';
@@ -69,7 +67,7 @@ export const rootRouterConfig: Routes = [
 
   ],
   exports: [ RouterModule, ],
-  providers: [ AuthService, AuthGuard, NotificationService, AngularFireAuth, AfService, AngularFirestore],
+  providers: [ AuthService, AuthGuard, NotificationService, AngularFireAuth, AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
