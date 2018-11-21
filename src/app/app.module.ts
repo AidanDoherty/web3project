@@ -7,7 +7,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 import { RouterModule, Routes } from '@angular/router';
 import { AuctionComponent } from './auction/auction.component';
 import { HttpClientModule} from '@angular/common/http'
@@ -22,15 +21,16 @@ import { AuthGuard } from './service/auth.guard';
 import { AuthService } from './service/auth.service';
 import { NotificationService } from './service/notification.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { SignupComponent } from './signup/signup.component';
 
 
 export const rootRouterConfig: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'auction', component: AuctionComponent}
+  { path: 'auction', component: AuctionComponent},
+  { path: 'signup', component: SignupComponent}
 ];
 
 
@@ -43,9 +43,9 @@ export const rootRouterConfig: Routes = [
     ProfileComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent,
     AuctionComponent,
-    BidComponent
+    BidComponent,
+    SignupComponent
   ],
   imports: [
     FormsModule, 
@@ -56,7 +56,8 @@ export const rootRouterConfig: Routes = [
     AngularFirestoreModule,
     BrowserAnimationsModule,
     BrowserModule,
-    RouterModule.forRoot(rootRouterConfig)
+    RouterModule.forRoot(rootRouterConfig),
+    HttpClientModule
 
   ],
   exports: [ RouterModule, ],

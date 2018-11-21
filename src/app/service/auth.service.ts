@@ -17,12 +17,12 @@ export class AuthService {
     this.user = _firebaseAuth.authState;
   }
 
-  signup(email: string, password: string, name: string) {
+  signup(value) {
     // clear all messages
     this.notifier.display(false, '');
     this._firebaseAuth
       .auth
-      .createUserWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(value.email, value.password)
       .then((res) => {
         this.sendEmailVerification();
         const message = 'A verification email has been sent, please check your email and follow the steps!';
@@ -31,7 +31,7 @@ export class AuthService {
           email: res.user.email,
           uid: res.user.uid,
           registrationDate: new Date().toString(),
-          name: name
+          name: value.name
         })
           .then(() => {
             firebase.auth().signOut();

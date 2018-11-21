@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     console.log(this.form.value)
-    this.auth.doLogin(this.form.value)
+    this.auth.signup(this.form.value)
     .then(res => {
       this.myRoute.navigate(['home']);
     }, err=> {
