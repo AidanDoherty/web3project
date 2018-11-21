@@ -11,7 +11,6 @@ import { RegisterComponent } from './register/register.component';
 import { RouterModule, Routes } from '@angular/router';
 import { AuctionComponent } from './auction/auction.component';
 import { HttpClientModule} from '@angular/common/http'
-import { AfService, } from './providers/af.service';
 import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
@@ -55,7 +54,7 @@ export const rootRouterConfig: Routes = [
     RouterModule.forRoot(rootRouterConfig)
   ],
   exports: [ RouterModule, ],
-  providers: [AfService, AuthService, AuthGuard, NotificationService, AngularFireAuth],
+  providers: [ AuthService, AuthGuard, NotificationService, AngularFireAuth],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

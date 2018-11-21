@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {AngularFireAuth} from "angularfire2/auth";
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs';
-import {AfService} from '../providers/af.service'
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -22,7 +21,7 @@ export class LoginComponent implements OnInit {
   errorMessage: string;
   form;
 
-  constructor(public AfService: AfService,
+  constructor(
    private afAuth: AngularFireAuth,private fb: FormBuilder, private myRoute: Router, private auth: AuthService) { 
      this.form = fb.group({
       email: ['', [Validators.required, Validators.email]],

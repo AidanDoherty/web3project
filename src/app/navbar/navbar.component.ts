@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AngularFireAuth} from "angularfire2/auth";
 import * as firebase from 'firebase/app';
-import { AfService} from '../providers/af.service'
 import { Observable } from 'rxjs';
 import {Router} from "@angular/router";
 import { AuthService } from '../service/auth.service';
@@ -15,7 +14,7 @@ export class NavbarComponent implements OnInit {
   user: Observable<firebase.User>;
   authenticated:boolean
  
-  constructor(public AfService: AfService,
+  constructor(
    private afAuth: AngularFireAuth,private router: Router, private auth: AuthService) { 
      console.log("Navbar Constructor")
     this.afAuth.authState.subscribe(
@@ -35,13 +34,13 @@ export class NavbarComponent implements OnInit {
  }
  login(){
   console.log("Login with Google")
-  this.AfService.loginWithGoogle();
+  this.auth.loginWithGoogle();
    this.authenticated = true;
    console.log(this.authenticated)
 }
 logout(){
   
-  this.AfService.logout();
+  
   this.auth.doLogout()
   console.log(this.authenticated)
   this.authenticated = false;

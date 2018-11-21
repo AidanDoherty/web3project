@@ -11,6 +11,7 @@ import { NotificationService } from './notification.service';
 export class AuthService {
   private user: Observable<firebase.User>;
   loggedInStatus: boolean = false;
+  
 
   constructor(private _firebaseAuth: AngularFireAuth, private router: Router, private notifier: NotificationService) {
     this.user = _firebaseAuth.authState;
@@ -83,6 +84,11 @@ export class AuthService {
       this.loggedInStatus = false;
 
     });
+  }
+
+  loginWithGoogle(){
+    const provider = new firebase.auth.GoogleAuthProvider();
+    this._firebaseAuth.auth.signInWithPopup(provider);
   }
 
   isLoggedIn():boolean {
