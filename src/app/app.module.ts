@@ -7,16 +7,35 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 import { RouterModule, Routes } from '@angular/router';
 import { AuctionComponent } from './auction/auction.component';
-import { HttpClientModule} from '@angular/common/http'
-import { AfService, } from './providers/af.service';
+import { HttpClientModule, HttpClient } from '@angular/common/http'
 import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { OrderModule } from 'ngx-order-pipe';
+import { AddbookComponent } from './addbook/addbook.component';
+import { DisplayBookComponent } from './display-book/display-book.component';
+
+import { BidComponent } from './bid/bid.component';
+import { AuthGuard } from './service/auth.guard';
+import { AuthService } from './service/auth.service';
+import { NotificationService } from './service/notification.service';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { SignupComponent } from './signup/signup.component';
+
+
+export const rootRouterConfig: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'addbook', component: AddbookComponent,canActivate: [AuthGuard] },
+  { path: 'home', component: HomeComponent,canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'auction', component: AuctionComponent,canActivate: [AuthGuard]},
+  { path: 'signup', component: SignupComponent,canActivate: [AuthGuard]}
+];
+
 
 @NgModule({
   declarations: [
@@ -27,26 +46,29 @@ import { OrderModule } from 'ngx-order-pipe';
     ProfileComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent,
-    AuctionComponent
+    AuctionComponent,
+    AddbookComponent,
+    DisplayBookComponent,
+    AuctionComponent,
+    BidComponent,
+    SignupComponent
   ],
   imports: [
+    FormsModule, 
+    ReactiveFormsModule,
     OrderModule ,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase,),
+    AngularFirestoreModule,
     BrowserAnimationsModule,
+    FormsModule,
     BrowserModule,
+    RouterModule.forRoot(rootRouterConfig),
+    HttpClientModule
 
-     RouterModule.forRoot([
-      { path: 'login', component: LoginComponent },
-      { path: 'home', component: HomeComponent },
-      { path: 'profile', component: ProfileComponent },
-      { path: 'auction', component: AuctionComponent },
-      { path: 'book', component: BookComponent }
-    ])
   ],
   exports: [ RouterModule, ],
-  providers: [AfService],
+  providers: [ AuthService, AuthGuard, NotificationService, AngularFireAuth, AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

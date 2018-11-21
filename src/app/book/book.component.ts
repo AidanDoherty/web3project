@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Ibook} from './IBook'
+import {BookserviceService} from '../bookservice.service'
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
@@ -7,15 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookComponent implements OnInit {
   
-  constructor() { }
+  constructor(private _BookserviceService:BookserviceService) { }
 
-  ngOnInit() {
+  ngOnInit():void {
+    this._BookserviceService.getbooks().subscribe(books =>
+      this.books = books); 
   }
 
   books: Ibook[] = [
 {
   bookId:1,
-  name:"Harry Potter",
+  bookname:"Harry Potter",
   auther:"Jk Wrowling",
   reserve:50,
   description:"scratch on the back",
@@ -23,7 +26,7 @@ export class BookComponent implements OnInit {
 },
 {
   bookId:1,
-  name:"Harry Potter",
+  bookname:"Harry Potter",
   auther:"Jk Wrowling",
   reserve:50,
   description:"scratch on the back",

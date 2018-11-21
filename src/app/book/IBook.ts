@@ -1,6 +1,6 @@
-class Ibook {
+export class Ibook {
     bookId:number;
-    name:string;
+    bookname:string;
     auther:string;
     reserve:number;
     description:string;
