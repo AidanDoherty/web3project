@@ -7,7 +7,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 import { RouterModule, Routes } from '@angular/router';
 import { AuctionComponent } from './auction/auction.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http'
@@ -21,6 +20,24 @@ import { AddbookComponent } from './addbook/addbook.component';
 import { FormsModule } from '@angular/forms';
 import { DisplayBookComponent } from './display-book/display-book.component';
 
+import { BidComponent } from './bid/bid.component';
+import { AuthGuard } from './service/auth.guard';
+import { AuthService } from './service/auth.service';
+import { NotificationService } from './service/notification.service';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { SignupComponent } from './signup/signup.component';
+
+
+export const rootRouterConfig: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'auction', component: AuctionComponent},
+  { path: 'signup', component: SignupComponent}
+];
+
+
 @NgModule({
   declarations: [
     
@@ -30,30 +47,29 @@ import { DisplayBookComponent } from './display-book/display-book.component';
     ProfileComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent,
     AuctionComponent,
     AddbookComponent,
-    DisplayBookComponent
+    DisplayBookComponent,
+    AuctionComponent,
+    BidComponent,
+    SignupComponent
   ],
   imports: [
+    FormsModule, 
+    ReactiveFormsModule,
     OrderModule ,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase,),
+    AngularFirestoreModule,
     BrowserAnimationsModule,
     FormsModule,
     BrowserModule,
-    HttpClientModule,
+    RouterModule.forRoot(rootRouterConfig),
+    HttpClientModule
 
-     RouterModule.forRoot([
-      { path: 'login', component: LoginComponent },
-      { path: 'home', component: HomeComponent },
-      { path: 'profile', component: ProfileComponent },
-      { path: 'auction', component: AuctionComponent },
-      { path: 'addbook', component: AddbookComponent }
-    ])
   ],
   exports: [ RouterModule, ],
-  providers: [AfService,HttpClientModule,AngularFirestore],
+  providers: [ AuthService, AuthGuard, NotificationService, AngularFireAuth, AfService, AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

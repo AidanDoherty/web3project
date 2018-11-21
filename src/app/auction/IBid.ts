@@ -1,6 +1,6 @@
-class Ibid {
-    bidUserName:string;
+export interface Ibid {
     bidID:number;
+    bidUserID:number;
     bidAmount:number;
 }
 

@@ -1,14 +1,15 @@
 
 export const environment = {
 
-  production :false,
-  firebase:  {
-    apiKey: "AIzaSyBiCS_IMRYOSherzLlHNTB4Gxp2rPm-_tM",
-    authDomain: "webpro3-e81d6.firebaseapp.com",
-    databaseURL: "https://webpro3-e81d6.firebaseio.com",
-    projectId: "webpro3-e81d6",
-    storageBucket: "webpro3-e81d6.appspot.com",
-    messagingSenderId: "688614305731"
-  }
 
-};
+    production :false,
+    firebase:  {
+        apiKey: "AIzaSyAprk9Vu8AuevmBCHiRKwRELh0GPnpUDnY",
+        authDomain: "web3project-60b3b.firebaseapp.com",
+        databaseURL: "https://web3project-60b3b.firebaseio.com",
+        projectId: "web3project-60b3b",
+        storageBucket: "web3project-60b3b.appspot.com",
+        messagingSenderId: "776147419041"
+    }
+  
+  };
