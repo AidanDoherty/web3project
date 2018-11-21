@@ -17,11 +17,7 @@ export class BidComponent implements OnInit {
   }
   bids: Ibid[];
   addBid(){
-    let tempBid:Ibid={
-      bidID:document.getElementById("BookID").value,
-      bidUserID:document.getElementById("UserID").value,
-      bidAmount:document.getElementById("StartPrice").value
-    }
-    this._afs.addbid(tempBid);
+    
+    
   }
 }

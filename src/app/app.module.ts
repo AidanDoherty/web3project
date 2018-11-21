@@ -29,6 +29,7 @@ import { SignupComponent } from './signup/signup.component';
 export const rootRouterConfig: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  { path: 'addbook', component: AddbookComponent },
   { path: 'home', component: HomeComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'auction', component: AuctionComponent},
