@@ -9,12 +9,16 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RouterModule, Routes } from '@angular/router';
 import { AuctionComponent } from './auction/auction.component';
-import { HttpClientModule} from '@angular/common/http'
+import { HttpClientModule, HttpClient } from '@angular/common/http'
+import { AfService, } from './providers/af.service';
 import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { OrderModule } from 'ngx-order-pipe';
+import { AddbookComponent } from './addbook/addbook.component';
+import { FormsModule } from '@angular/forms';
+import { DisplayBookComponent } from './display-book/display-book.component';
 
 import { BidComponent } from './bid/bid.component';
 import { AuthGuard } from './service/auth.guard';
@@ -44,6 +48,9 @@ export const rootRouterConfig: Routes = [
     HomeComponent,
     LoginComponent,
     AuctionComponent,
+    AddbookComponent,
+    DisplayBookComponent,
+    AuctionComponent,
     BidComponent,
     SignupComponent
   ],
@@ -55,13 +62,14 @@ export const rootRouterConfig: Routes = [
     AngularFireModule.initializeApp(environment.firebase,),
     AngularFirestoreModule,
     BrowserAnimationsModule,
+    FormsModule,
     BrowserModule,
     RouterModule.forRoot(rootRouterConfig),
     HttpClientModule
 
   ],
   exports: [ RouterModule, ],
-  providers: [ AuthService, AuthGuard, NotificationService, AngularFireAuth],
+  providers: [ AuthService, AuthGuard, NotificationService, AngularFireAuth, AfService, AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
