@@ -11,13 +11,28 @@ import { RegisterComponent } from './register/register.component';
 import { RouterModule, Routes } from '@angular/router';
 import { AuctionComponent } from './auction/auction.component';
 import { HttpClientModule} from '@angular/common/http'
-import { AfService, } from './providers/af.service';
 import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { OrderModule } from 'ngx-order-pipe';
+
 import { BidComponent } from './bid/bid.component';
+import { AuthGuard } from './service/auth.guard';
+import { AuthService } from './service/auth.service';
+import { NotificationService } from './service/notification.service';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
+
+export const rootRouterConfig: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'auction', component: AuctionComponent}
+];
+
 
 @NgModule({
   declarations: [
@@ -33,24 +48,19 @@ import { BidComponent } from './bid/bid.component';
     BidComponent
   ],
   imports: [
+    FormsModule, 
+    ReactiveFormsModule,
     OrderModule ,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase,),
     AngularFirestoreModule,
     BrowserAnimationsModule,
     BrowserModule,
-    HttpClientModule,
+    RouterModule.forRoot(rootRouterConfig)
 
-     RouterModule.forRoot([
-      { path: 'login', component: LoginComponent },
-      { path: 'home', component: HomeComponent },
-      { path: 'profile', component: ProfileComponent },
-      { path: 'auction', component: AuctionComponent },
-      { path: 'book', component: BookComponent }
-    ])
   ],
   exports: [ RouterModule, ],
-  providers: [AfService],
+  providers: [ AuthService, AuthGuard, NotificationService, AngularFireAuth],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
