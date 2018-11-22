@@ -8,16 +8,22 @@ import {Ibid} from '../auction/IBid'
 })
 export class BidComponent implements OnInit {
 
-  constructor(private _afs:FirestoreService) {
-   }
+  constructor(private _afs:FirestoreService) {}
+
+  BidID:number;
+  UserID:number;
+  Price:number;
 
   ngOnInit():void {
-    this._afs.getbids().subscribe(bids =>
-      this.bids = bids);
+    this._afs.getbids().subscribe(bids =>this.bids = bids);
   }
   bids: Ibid[];
   addBid(){
-    
-    
+    let tempBid:Ibid={
+      bidID:this.BidID,
+      bidUserID:this.UserID,
+      bidAmount:this.Price
+    }
+    this._afs.addbid(tempBid);
   }
 }

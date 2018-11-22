@@ -1,12 +1,30 @@
 <app-book></app-book>
 <div class="test">
   <h1>Time Remaing to bid : {{message}}</h1>
-  <img src="http://www.opiitalia.it/wp-content/uploads/2015/03/nlr53_anaffairinredsquare_color.png" width="{{message * 30}}"
-    height="30px">
-
+  <img src="http://www.opiitalia.it/wp-content/uploads/2015/03/nlr53_anaffairinredsquare_color.png" width="{{message * 30}}" height="30px">
 </div>
-<app-bid></app-bid>
-
+<table class="table">
+  <div class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>User ID</th>
+        <th>Book ID</th>
+        <th>Price</th>
+        <th>Time Remaining</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let auction of auctions">
+        <td>{{auction.AuctionID}}</td>
+        <td>{{auction.UserID}}</td>
+        <td>{{auction.BookID}}</td>
+        <td>{{auction.Price}}</td>
+        <td>{{auction.TimeRemaining}}</td>
+    </tr>
+  </tbody>  
+  </div>
+  </table>
 <div class="form-group">
   <label for="bd">Bid:</label>
   <input type="text" class="form-control" id="bd">

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { bind } from '@angular/core/src/render3/instructions';
-import { OrderPipe } from 'ngx-order-pipe';
+import { FirestoreService } from '../firestore.service';
+import { IAuction } from './IAuction';
 
 @Component({
   selector: 'app-auction',
@@ -9,8 +9,10 @@ import { OrderPipe } from 'ngx-order-pipe';
 })
 export class AuctionComponent implements OnInit {
 
- 
+  constructor(private _afs:FirestoreService){
 
+  }
+  auctions:IAuction[];
   order: string = 'bidAmount';
   reverse: boolean = false;
   intervalId = 0;
@@ -23,7 +25,7 @@ export class AuctionComponent implements OnInit {
   clearTimer() { clearInterval(this.intervalId); }
   ngOnInit() {
     this.start();
-   
+    this._afs.getauctions().subscribe(auctions =>this.auctions = auctions);
     
   }
   ngOnDestroy() { this.clearTimer(); }
