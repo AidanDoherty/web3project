@@ -33,7 +33,7 @@ export const rootRouterConfig: Routes = [
   { path: 'home', component: HomeComponent,canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'auction', component: AuctionComponent,canActivate: [AuthGuard]},
-  { path: 'signup', component: SignupComponent,canActivate: [AuthGuard]}
+  { path: 'signup', component: SignupComponent}
 ];
 
 

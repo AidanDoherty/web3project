@@ -21,6 +21,7 @@
         <td>{{auction.BookID}}</td>
         <td>{{auction.Price}}</td>
         <td>{{auction.TimeRemaining}}</td>
+        <td></td>
     </tr>
   </tbody>  
   </div>
@@ -28,5 +29,5 @@
 <div class="form-group">
   <label for="bd">Bid:</label>
   <input type="text" class="form-control" id="bd">
+  <button type="submit" (click)="bid()" class="btn btn-primary">Bid!</button>
 </div>
-<button type="submit" (click)="bid()" class="btn btn-primary">Bid!</button>

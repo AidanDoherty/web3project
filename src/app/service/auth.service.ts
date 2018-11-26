@@ -11,10 +11,13 @@ import { NotificationService } from './notification.service';
 export class AuthService {
   private user: Observable<firebase.User>;
   loggedInStatus: boolean = false;
-  
+  authState: any = null;
 
   constructor(private _firebaseAuth: AngularFireAuth, private router: Router, private notifier: NotificationService) {
     this.user = _firebaseAuth.authState;
+    this._firebaseAuth.authState.subscribe((auth)=>{
+      this.authState=auth;
+    });
   }
 
   signup(value) {
@@ -93,5 +96,8 @@ export class AuthService {
 
   isLoggedIn():boolean {
       return this.loggedInStatus;
+  }
+  getcurrentUser():any{
+    return this.authState;
   }
 }

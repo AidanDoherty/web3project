@@ -12,6 +12,7 @@ export class AuctionComponent implements OnInit {
   constructor(private _afs:FirestoreService){
 
   }
+  isBidding:boolean=false;
   auctions:IAuction[];
   order: string = 'bidAmount';
   reverse: boolean = false;
@@ -45,8 +46,6 @@ export class AuctionComponent implements OnInit {
         if (this.seconds < 0) { this.seconds = 30; } // reset
         this.message = `${this.seconds}`;
         this.bar = +this.message;
-
-
       }
     }, 1000);
 
