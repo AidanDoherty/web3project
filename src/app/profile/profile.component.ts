@@ -5,6 +5,7 @@ import {AuthService} from '../service/auth.service';
 import {Observable} from  'rxjs';
 import { map, filter } from 'rxjs/operators';
 import { IUser } from '../login/IUser';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-profile',
@@ -17,16 +18,17 @@ export class ProfileComponent implements OnInit {
   email:string;
   name:string;
   image:string;
-  constructor(private afAuth: AngularFireAuth,private _afs:FirestoreService,private auth:AuthService) {
+  constructor(private afAuth: AngularFireAuth,private _afs:FirestoreService,private auth:AuthService, private db: AngularFirestore) {
     this.user=auth.getcurrentUser();
-    this.userInfo=_afs.getusers();
+     var temp=this.db.collection('users');
+
    }
 
   ngOnInit() {
    
   }
   test(){
-    console.log();
+    console.log(this.user.email);
     
 
   }
