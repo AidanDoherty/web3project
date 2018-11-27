@@ -20,16 +20,19 @@ export class ProfileComponent implements OnInit {
   image:string;
   constructor(private afAuth: AngularFireAuth,private _afs:FirestoreService,private auth:AuthService, private db: AngularFirestore) {
     this.user=auth.getcurrentUser();
-     var temp=this.db.collection('users');
+    this.email=this.user.email;
+   
 
    }
 
   ngOnInit() {
-   
+    
+  
   }
   test(){
-    console.log(this.user.email);
-    
-
+   
+    this.db.collection('Users', userdata=>
+    userdata.where('email', "==" ,this.email)).valueChanges().subscribe(data=>
+     console.log(data));
   }
 }

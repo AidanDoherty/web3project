@@ -31,7 +31,7 @@ export const rootRouterConfig: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'addbook', component: AddbookComponent,canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent,canActivate: [AuthGuard] },
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent},
   { path: 'auction', component: AuctionComponent,canActivate: [AuthGuard]},
   { path: 'signup', component: SignupComponent}
 ];
