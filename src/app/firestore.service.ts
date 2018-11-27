@@ -53,8 +53,9 @@ getusers():Observable<IUser[]>{
  addauction(auction:IAuction): void{
   this.auctionCollection.add(auction);
   }
-  adduser(value):void{
+  adduser(value,userId){
     let tempUser:IUser={
+      uid:userId,
       email:value.email,
       password:value.password,
       name:value.name,

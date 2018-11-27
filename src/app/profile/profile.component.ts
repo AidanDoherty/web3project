@@ -21,8 +21,6 @@ export class ProfileComponent implements OnInit {
   constructor(private afAuth: AngularFireAuth,private _afs:FirestoreService,private auth:AuthService, private db: AngularFirestore) {
     this.user=auth.getcurrentUser();
     this.email=this.user.email;
-   
-
    }
 
   ngOnInit() {
@@ -30,9 +28,9 @@ export class ProfileComponent implements OnInit {
   
   }
   test(){
-   
-    this.db.collection('Users', userdata=>
-    userdata.where('email', "==" ,this.email)).valueChanges().subscribe(data=>
-     console.log(data));
+    /* this.db.collection('Users', userdata=>
+    userdata.where('email', "==" ,this.email.toLowerCase())).valueChanges().subscribe(data=>
+     console.log(data)); */
+      console.log(this.afAuth.auth.currentUser.photoURL);
   }
 }

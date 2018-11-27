@@ -4,6 +4,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase';
 import {Router} from '@angular/router'
 import { NotificationService } from './notification.service';
+import { FirestoreService } from '../firestore.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class AuthService {
   loggedInStatus: boolean = false;
   authState: any = null;
 
-  constructor(private _firebaseAuth: AngularFireAuth, private router: Router, private notifier: NotificationService) {
+  constructor(private _firebaseAuth: AngularFireAuth, private router: Router, private notifier: NotificationService,private _afs:FirestoreService) {
     this.user = _firebaseAuth.authState;
     this._firebaseAuth.authState.subscribe((auth)=>{
       this.authState=auth;
@@ -30,6 +31,8 @@ export class AuthService {
         this.sendEmailVerification();
         const message = 'A verification email has been sent, please check your email and follow the steps!';
         this.notifier.display(true, message);
+        this._afs.adduser(value,res.user.uid);
+        
         return firebase.database().ref('users/' + res.user.uid).set({
           email: res.user.email,
           uid: res.user.uid,

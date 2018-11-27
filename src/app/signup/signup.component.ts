@@ -3,6 +3,7 @@ import { AuthService } from '../service/auth.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {FirestoreService} from '../firestore.service';
+import { LowerCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-signup',
@@ -29,7 +30,6 @@ export class SignupComponent implements OnInit {
     console.log(this.form.value)
     this.auth.doRegister(this.form.value)
     .then(res => {
-      this._afs.adduser(this.form.value);
       this.myRoute.navigate(['profile']);
     }, err=> {
       console.log(err);
