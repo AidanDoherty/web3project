@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {FirestoreService} from '../firestore.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import {AuthService} from '../service/auth.service';
-import {Observable} from  'rxjs';
-import { map, filter } from 'rxjs/operators';
-import { IUser } from '../login/IUser';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
@@ -13,14 +10,11 @@ import { AngularFirestore } from '@angular/fire/firestore';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  user;
-  userInfo :Observable<IUser[]>;
-  email:string;
-  name:string;
+  displayName:string;
   image:string;
   constructor(private afAuth: AngularFireAuth,private _afs:FirestoreService,private auth:AuthService, private db: AngularFirestore) {
-    this.user=auth.getcurrentUser();
-    this.email=this.user.email;
+    this.displayName=this.afAuth.auth.currentUser.displayName;
+    this.image=this.afAuth.auth.currentUser.photoURL;
    }
 
   ngOnInit() {

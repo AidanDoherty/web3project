@@ -27,14 +27,8 @@ export class SignupComponent implements OnInit {
   }
 
   signup() {
-    console.log(this.form.value)
-    this.auth.doRegister(this.form.value)
-    .then(res => {
-      this.myRoute.navigate(['profile']);
-    }, err=> {
-      console.log(err);
-      this.errorMessage = err.message;
-    })
+    console.log(this.form.value);
+    this.auth.signup(this.form.value);
   }
 
 }

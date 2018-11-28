@@ -28,21 +28,11 @@ export class AuthService {
       .auth
       .createUserWithEmailAndPassword(value.email, value.password)
       .then((res) => {
-        this.sendEmailVerification();
         const message = 'A verification email has been sent, please check your email and follow the steps!';
         this.notifier.display(true, message);
-        this._afs.adduser(value,res.user.uid);
-        
-        return firebase.database().ref('users/' + res.user.uid).set({
-          email: res.user.email,
-          uid: res.user.uid,
-          registrationDate: new Date().toString(),
-          name: value.name
-        })
-          .then(() => {
-            firebase.auth().signOut();
-            this.router.navigate(['login']);
-          });
+        this.sendEmailVerification();
+        res.user.updateProfile({displayName:value.name,photoURL:value.image});
+        this.router.navigate(['login']);
       })
       .catch(err => {
         console.log(err);
