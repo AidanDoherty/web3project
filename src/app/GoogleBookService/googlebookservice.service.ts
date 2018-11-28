@@ -16,5 +16,9 @@ export class GooglebookserviceService {
   getTitleList(title: string ): Observable<IGoogleBook> {
     return this._http.get<IGoogleBook>(this.url + title)
   }
+  getAutherList(auther: string ): Observable<IGoogleBook> {
+    return this._http.get<IGoogleBook>(this.url + auther)
+  }
+  
 }
 

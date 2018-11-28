@@ -5,4 +5,5 @@ export class Ibook {
     reserve:number;
     description:string;
     imgsrc:string;
+    publisher:string
 }

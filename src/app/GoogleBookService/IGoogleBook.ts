@@ -6,9 +6,14 @@ export interface IItems{
 }
 export interface IvolumeInfo{
   title:string;
+  authers:IAuthor[]
   publisher:string;
+  description:string;
   imageLinks:imageLinks;
 }
 export interface imageLinks{
     thumbnail:string;
+}
+export interface IAuthor{
+    authors:string;
 }

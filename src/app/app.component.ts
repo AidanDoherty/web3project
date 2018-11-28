@@ -7,5 +7,5 @@ import { FirestoreService } from './firestore.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'webpro3';
+  title = 'BookAuction.com';
 }

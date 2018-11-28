@@ -9,3 +9,6 @@
 .title{
 padding:20px;
 }
+.layout{
+    display: inline-block
+}

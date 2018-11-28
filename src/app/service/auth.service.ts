@@ -86,9 +86,23 @@ export class AuthService {
     });
   }
 
-  loginWithGoogle(){
-    const provider = new firebase.auth.GoogleAuthProvider();
-    this._firebaseAuth.auth.signInWithPopup(provider);
+  doGoogleLogin(){
+    return new Promise<any>((resolve, reject) => {
+      let provider = new firebase.auth.GoogleAuthProvider();
+      provider.addScope('profile');
+      provider.addScope('email');
+      this._firebaseAuth.auth
+      .signInWithPopup(provider)
+      .then(res => {
+        resolve(res);
+        this.loggedInStatus = true;
+      }, err => {
+        alert(err);
+        reject(err);
+       
+      })
+    })
+    
   }
 
   isLoggedIn():boolean {

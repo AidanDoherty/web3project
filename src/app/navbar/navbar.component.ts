@@ -34,7 +34,7 @@ export class NavbarComponent implements OnInit {
  }
  login(){
   console.log("Login with Google")
-  this.auth.loginWithGoogle();
+  this.auth.doGoogleLogin();
    this.authenticated = true;
    console.log(this.authenticated)
 }

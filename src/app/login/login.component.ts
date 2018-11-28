@@ -44,4 +44,14 @@ export class LoginComponent implements OnInit {
       this.errorMessage = err.message;
     })
   }
+  
+  doGoogleLogin() {
+    this.auth.doGoogleLogin().
+      then(res => {
+        this.myRoute.navigate(['home']);
+      }, err => {
+        console.log(err);
+        this.errorMessage = err.message;
+      })
+  }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {GooglebookserviceService} from '../GoogleBookService/googlebookservice.service'
 import { IGoogleBook } from '../GoogleBookService/IGoogleBook';
+import {Ibook} from '../book/IBook'
 
 @Component({
   selector: 'app-display-book',
@@ -9,6 +10,11 @@ import { IGoogleBook } from '../GoogleBookService/IGoogleBook';
 })
 export class DisplayBookComponent implements OnInit {
  @Input() title:string ;
+ authors:string;
+ publisher:string;
+ description:string;
+ url:string
+
  @Output() AddbookinfoEE: EventEmitter<any> = new EventEmitter();
 
  bookdata:IGoogleBook;
@@ -21,9 +27,20 @@ export class DisplayBookComponent implements OnInit {
     });
   }
 
-  selectbook(title):boolean{
-    this.AddbookinfoEE.emit(title);
-    alert(title)
+  selectbook(title,authors,publisher,description,url ):boolean{
+    let book: Ibook = {
+      bookId: 0,
+      bookname: title,
+      auther: authors,
+      reserve: 0,
+      description: description,
+      imgsrc: url,
+      publisher:publisher
+      
+
+    }
+    this.AddbookinfoEE.emit(book);
+    
     return false;
   }
 

@@ -17,14 +17,15 @@ import { environment } from 'src/environments/environment';
 import { OrderModule } from 'ngx-order-pipe';
 import { AddbookComponent } from './addbook/addbook.component';
 import { DisplayBookComponent } from './display-book/display-book.component';
-
+import { FlexLayoutModule } from "@angular/flex-layout";
 import { BidComponent } from './bid/bid.component';
 import { AuthGuard } from './service/auth.guard';
 import { AuthService } from './service/auth.service';
 import { NotificationService } from './service/notification.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
-
+import { MatButtonModule,MatCardModule,MatFormFieldModule,
+MatInputModule,MatToolbarModule,MatListModule,MatProgressSpinnerModule} from '@angular/material'
 
 export const rootRouterConfig: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -33,7 +34,7 @@ export const rootRouterConfig: Routes = [
   { path: 'home', component: HomeComponent,canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'auction', component: AuctionComponent,canActivate: [AuthGuard]},
-  { path: 'signup', component: SignupComponent,canActivate: [AuthGuard]}
+  { path: 'signup', component: SignupComponent}
 ];
 
 
@@ -62,10 +63,17 @@ export const rootRouterConfig: Routes = [
     AngularFirestoreModule,
     BrowserAnimationsModule,
     FormsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatToolbarModule,MatListModule,
+    MatProgressSpinnerModule,
     BrowserModule,
     RouterModule.forRoot(rootRouterConfig),
-    HttpClientModule
-
+    HttpClientModule,
+    FlexLayoutModule
+    
   ],
   exports: [ RouterModule, ],
   providers: [ AuthService, AuthGuard, NotificationService, AngularFireAuth, AngularFirestore],

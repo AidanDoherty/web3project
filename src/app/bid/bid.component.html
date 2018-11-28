@@ -8,7 +8,7 @@
       </tr>
     </thead>
     <tbody>
-    <tr  *ngFor="let bid of bids">
+    <tr  *ngFor="let bid of bids | orderBy:bidAmount">
     
         <td>{{bid.bidID}}</td>
         <td>{{bid.bidUserID}}</td>
@@ -19,10 +19,6 @@
   
   </div>
   </table>
-  BookID:
-  <input id="BookID" type="number" value="1"/>
-  UserID:
-  <input id="UserID" type="number" value="1"/>
   Start Price:
-  <input id="StartPrice" type="number" value="1"/>
+  <input id="StartPrice" type="number" value="1" name="Price" [(ngModel)]="Price"/>
   <button (click)="addBid()">add bid</button>

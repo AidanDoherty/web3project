@@ -1,6 +1,6 @@
 export interface Ibid {
     bidID:number;
-    bidUserID:number;
+    bidUserID:string;
     bidAmount:number;
 }
 

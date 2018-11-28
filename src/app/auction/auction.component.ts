@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { bind } from '@angular/core/src/render3/instructions';
 import { OrderPipe } from 'ngx-order-pipe';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-auction',
@@ -10,7 +11,7 @@ import { OrderPipe } from 'ngx-order-pipe';
 export class AuctionComponent implements OnInit {
 
  
-
+  
   order: string = 'bidAmount';
   reverse: boolean = false;
   intervalId = 0;
