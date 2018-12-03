@@ -27,16 +27,7 @@ export class AuthService {
         this.sendEmailVerification();
         const message = 'A verification email has been sent, please check your email and follow the steps!';
         this.notifier.display(true, message);
-        return firebase.database().ref('users/' + res.user.uid).set({
-          email: res.user.email,
-          uid: res.user.uid,
-          registrationDate: new Date().toString(),
-          name: value.name
-        })
-          .then(() => {
-            firebase.auth().signOut();
-            this.router.navigate(['login']);
-          });
+        res.user.updateProfile({displayName:value.name,photoURL:'https://angular.io/assets/images/logos/angular/angular.png'});
       })
       .catch(err => {
         console.log(err);
