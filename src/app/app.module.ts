@@ -27,6 +27,7 @@ import { SignupComponent } from './signup/signup.component';
 import { MatButtonModule,MatCardModule,MatFormFieldModule,
 MatInputModule,MatToolbarModule,MatListModule,MatProgressSpinnerModule} from '@angular/material'
 
+
 export const rootRouterConfig: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
