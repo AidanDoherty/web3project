@@ -1,12 +1,20 @@
-Username: <p>{{displayName}}</p>
-    <img src="{{imageUrl}}">
-<br>
-<div *ngIf="changingDetails">
-<label for="name">New Name</label>
-<input type="text" class="name" [(ngModel)]="displayName">
-<br>
-<label for="image">New image</label>
-<input type="text" class="image" [(ngModel)]="imageUrl">
-<button (click)='updateProfile()' >Update</button>
-</div>
-<button (click)="changeDets()">Change Details</button>
+
+<mat-card class="text-center">
+    <mat-card-content>
+        <img width="128px" height="128px" src="{{imageUrl}}"/>
+        <h2>{{displayName}}</h2>
+        <button mat-raised-button color="primary" (click)="changeDets()">Change Details</button>
+    </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="changingDetails" class="text-center">
+    <mat-card-content>
+        <label for="name">New Name: </label>
+        <input type="text" class="name" [(ngModel)]="displayName">
+        <br>
+        <label for="image">New image: </label>
+        <input type="text" class="image" [(ngModel)]="imageUrl">
+        <br>
+        <button mat-raised-button color="primary" (click)='updateProfile()' >Update</button>
+    </mat-card-content>
+</mat-card>
