@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
   doFaceBookLogin() {
     this.auth.doFacebookLogin().
       then(res => {
-        this.myRoute.navigate(['product-list']);
+        this.myRoute.navigate(['home']);
       }, err => {
         console.log(err);
         this.errorMessage = err.message;
