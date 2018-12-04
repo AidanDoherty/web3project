@@ -44,6 +44,9 @@ export class LoginComponent implements OnInit {
       this.errorMessage = err.message;
     })
   }
+  signup(){
+    this.myRoute.navigate(['signup']);
+  }
   
   doGoogleLogin() {
     this.auth.doGoogleLogin().
