@@ -18,6 +18,9 @@ export class BookserviceService {
     this.bookCollection = _afs.collection<Ibook>("Books");
   }
 
+  getUserBooks(uid){
+    this.bookCollection = this._afs.collection<Ibook>("Books", book=> book.where(uid,"==",book.userid));
+  }
  getbooks():Observable<Ibook[]>{
    this.Books = this.bookCollection.valueChanges();
    this.Books.subscribe(data => console.log("getbooks()" + data));
