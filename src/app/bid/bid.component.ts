@@ -13,7 +13,7 @@ export class BidComponent implements OnInit {
   BidID:number;
   UserID:string;
   Price:number;
-
+  bidAmount:number;
   constructor(private _afs:FirestoreService, private afauth:AngularFireAuth) {
    }
 

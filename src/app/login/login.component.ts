@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     this.auth.doLogin(this.form.value).then(res => {
       this.myRoute.navigate(['home']);
     }, err=> {
-      console.log(err);
+      alert(err);
       this.errorMessage = err.message;
     })
   }
@@ -50,6 +50,15 @@ export class LoginComponent implements OnInit {
   
   doGoogleLogin() {
     this.auth.doGoogleLogin().
+      then(res => {
+        this.myRoute.navigate(['home']);
+      }, err => {
+        console.log(err);
+        this.errorMessage = err.message;
+      })
+  }
+  doFaceBookLogin() {
+    this.auth.doFacebookLogin().
       then(res => {
         this.myRoute.navigate(['home']);
       }, err => {

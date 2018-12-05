@@ -35,8 +35,8 @@ export class DisplayBookComponent implements OnInit {
       reserve: 0,
       description: description,
       imgsrc: url,
-      publisher:publisher
-      
+      publisher:publisher,
+      userid:null
 
     }
     this.AddbookinfoEE.emit(book);

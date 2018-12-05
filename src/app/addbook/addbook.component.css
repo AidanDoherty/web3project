@@ -1,22 +1,10 @@
-.box{
-    border:solid;
-    border-width: 1px;
-    border-color: black;
-   height :600px;
-   font-size:26px
-    
-}
-.box2{
-    border:solid;
-    border-width: 1px;
-    border-color: black;
-   height :600px;
-   font-size:26px
-    
-}
+
 .button{
     white-space: pre;
 }
 .padding{
     height: 10px;
+}
+.form{
+    background-color: grey;
 }

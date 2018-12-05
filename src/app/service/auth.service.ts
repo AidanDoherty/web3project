@@ -95,6 +95,21 @@ export class AuthService {
     })
     
   }
+  doFacebookLogin(){
+    return new Promise<any>((resolve, reject) => {
+      let provider = new firebase.auth.FacebookAuthProvider();
+      this._firebaseAuth.auth
+      .signInWithPopup(provider)
+      .then(res => {
+        resolve(res);
+        this.loggedInStatus = true;
+      }, err => {
+        alert(err);
+        reject(err);
+       
+      })
+    })
+ }
 
   isLoggedIn():boolean {
       return this.loggedInStatus;
