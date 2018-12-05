@@ -1,0 +1,16 @@
+<div class="grid-container">
+
+  <div class="grid-item" *ngFor="let item of auctionlist">
+    <div fxLayout="row" class="layout" fxLayoutAlign="space-evenly stretch" fxLayoutGap="20px">
+      <mat-card fxFlex="3 3 calc(15em + 20px)">
+        <img class="image" >
+        <mat-card-header>
+          <!-- <mat-card-title>Name: {{book.bookname| slice:0:25}}</mat-card-title> -->
+          <mat-card-title>Author: {{item.Price}}</mat-card-title>
+          <!-- <mat-card-title>Reserve: ${{book.reserve| slice:0:25}}</mat-card-title> -->
+        </mat-card-header>
+        <button [routerLink]="[ '/auction', item.id]" mat-raised-button color="primary">Go to Auction</button>
+      </mat-card>
+    </div>
+  </div>
+</div>

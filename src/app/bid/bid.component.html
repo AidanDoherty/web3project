@@ -8,10 +8,10 @@
       </tr>
     </thead>
     <tbody>
-    <tr  *ngFor="let bid of bids | orderBy:bidAmount">
+    <tr *ngFor="let bid of bids">
     
-        <td>{{bid.bidID}}</td>
-        <td>{{bid.bidUserID}}</td>
+        <!-- <td>{{bid.bidID}}</td>
+        <td>{{bid.bidUserID}}</td> -->
         <td>{{bid.bidAmount}}</td>
       
     </tr>

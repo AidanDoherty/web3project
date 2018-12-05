@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FirestoreService } from '../firestore.service';
 import {Ibid} from '../auction/IBid'
 import { FirebaseAuth } from '@angular/fire';
@@ -13,22 +13,19 @@ export class BidComponent implements OnInit {
   BidID:number;
   UserID:string;
   Price:number;
+  @Input() bids: Ibid[];
 
   constructor(private _afs:FirestoreService, private afauth:AngularFireAuth) {
    }
 
   ngOnInit():void {
-    this._afs.getbids().subscribe(bids =>
-      this.bids = bids);
+    
+
   }
-  bids: Ibid[];
+  
+
   addBid(){
-    let tempBid:Ibid={
-      bidID:0,
-      bidUserID:this.afauth.auth.currentUser.displayName,
-      bidAmount:this.Price
-    }
-    this._afs.addbid(tempBid);
+   console.log(this.bids)
     
   }
 }

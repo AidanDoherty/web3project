@@ -5,6 +5,10 @@ import { OrderPipe } from 'ngx-order-pipe';
 import { Observable } from 'rxjs';
 
 import { FirestoreService } from '../firestore.service';
+import { ActivatedRoute } from '@angular/router';
+import { IAuction } from '../interface/iauction';
+import { AuctionService } from '../service/auction.service';
+import { Ibid } from './IBid';
 
 
 
@@ -16,7 +20,7 @@ import { FirestoreService } from '../firestore.service';
 export class AuctionComponent implements OnInit {
 
 
-  constructor(private _afs:FirestoreService){
+  constructor(private _auctionservice:AuctionService, private route:ActivatedRoute, private _afs:FirestoreService){
 
   }
 
@@ -27,13 +31,24 @@ export class AuctionComponent implements OnInit {
   message;
   seconds = 30;
   bar = 0
+  bids: Ibid[]
 
 
+auctiondetails: IAuction
+sub
+id
 
   clearTimer() { clearInterval(this.intervalId); }
   ngOnInit() {
-    this.start();
+    this.sub = this.route.params.subscribe(params => {
+      this.id = params['id'];
+    })
+
+    this._auctionservice.getAuction(this.id).subscribe(data=>
+      console.log(data.data()))
     
+    this._auctionservice.getBids(this.id).subscribe(data=>
+      this.bids = data)
     
   }
   ngOnDestroy() { this.clearTimer(); }
@@ -62,8 +77,7 @@ export class AuctionComponent implements OnInit {
 
   }
   bid() {
-    console.log("Need database for this.")
-
+    this._auctionservice.addBid('1')
   }
 
 

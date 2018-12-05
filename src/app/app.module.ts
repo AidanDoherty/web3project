@@ -25,7 +25,8 @@ import { NotificationService } from './service/notification.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
 import { MatButtonModule,MatCardModule,MatFormFieldModule,
-MatInputModule,MatToolbarModule,MatListModule,MatProgressSpinnerModule} from '@angular/material'
+MatInputModule,MatToolbarModule,MatListModule,MatProgressSpinnerModule} from '@angular/material';
+import { AuctionListComponent } from './auction-list/auction-list.component'
 
 
 export const rootRouterConfig: Routes = [
@@ -34,7 +35,7 @@ export const rootRouterConfig: Routes = [
   { path: 'addbook', component: AddbookComponent,canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent,canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'auction', component: AuctionComponent,canActivate: [AuthGuard]},
+  { path: 'auction/:id', component: AuctionComponent},
   { path: 'signup', component: SignupComponent}
 ];
 
@@ -53,7 +54,8 @@ export const rootRouterConfig: Routes = [
     DisplayBookComponent,
     AuctionComponent,
     BidComponent,
-    SignupComponent
+    SignupComponent,
+    AuctionListComponent
   ],
   imports: [
     FormsModule, 
