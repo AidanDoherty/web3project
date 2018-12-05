@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     this.auth.doLogin(this.form.value).then(res => {
       this.myRoute.navigate(['home']);
     }, err=> {
-      console.log(err);
+      alert(err);
       this.errorMessage = err.message;
     })
   }

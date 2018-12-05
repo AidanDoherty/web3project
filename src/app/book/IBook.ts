@@ -6,4 +6,5 @@ export class Ibook {
     description:string;
     imgsrc:string;
     publisher:string
+    userid:string;
 }
