@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
   constructor(private afAuth :AngularFireAuth, private _bs:BookserviceService) { 
     this.displayName=this.afAuth.auth.currentUser.displayName;
     this.imageUrl=this.afAuth.auth.currentUser.photoURL;
-    this.userBooks= this._bs.getbooks();
+    this.userBooks= this._bs.getUserBooks();
     this.afAuth.auth.currentUser.displayName
   }
   updateProfile(name:string,image:string){
