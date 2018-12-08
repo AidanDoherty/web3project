@@ -23,20 +23,20 @@ export class AuctionService {
 
   getBids(id:string) {
 
-    return this.db.collection<Ibid>('Auctions/'+ id+'/Bids').valueChanges()
+    return this.db.collection<Ibid>('Auctions/'+ id+'/Bids', bids=> bids.orderBy("bidAmount", "desc")).valueChanges()
   }
 
-  addBid(id:string)
+  addBid(id:string, bidamountd:number)
   {
     return this.db.collection<Ibid>('Auctions/'+ id+'/Bids').add({
-      createdby: firebase.auth().currentUser.uid,
-      bidAmount: 100
+      createdby: firebase.auth().currentUser.email,
+      bidAmount: bidamountd
     })
   }
 
 
   getBook() {
 
-    return this.db.collection<Ibook>('Books').doc('4qHr8eCRn7x6AHVnou09').valueChanges()
+    return this.db.collection<Ibook>('Books').doc('9bhXGB2sNEMlAYjssr5S').valueChanges()
   }
 }

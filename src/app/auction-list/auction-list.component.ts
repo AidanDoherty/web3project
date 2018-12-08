@@ -16,7 +16,7 @@ export class AuctionListComponent implements OnInit {
   auctionlist: IAuction[]
   testaer
 
-  
+
 
   ngOnInit() {
     this._auction.getAuctionlist().subscribe(data => {
@@ -26,12 +26,7 @@ export class AuctionListComponent implements OnInit {
           ...e.payload.doc.data()
         }
       })
-    })
-      
-    
-      
-      
-    
+    } )
   }
 
 

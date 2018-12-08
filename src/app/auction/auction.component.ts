@@ -32,7 +32,7 @@ export class AuctionComponent implements OnInit {
   seconds = 30;
   bar = 0
   bids: Ibid[]
-
+  bidamount: number;
 
 auctiondetails: IAuction
 sub
@@ -48,7 +48,7 @@ id
       console.log(data.data()))
     
     this._auctionservice.getBids(this.id).subscribe(data=>
-      this.bids = data)
+      console.log(this.bids = data))
     
   }
   ngOnDestroy() { this.clearTimer(); }
@@ -77,7 +77,7 @@ id
 
   }
   bid() {
-    this._auctionservice.addBid('1')
+    this._auctionservice.addBid('1', this.bidamount)
   }
 
 
