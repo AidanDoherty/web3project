@@ -1,5 +1,4 @@
-<app-book ></app-book>
-
+<app-book data=[auctiondetails]></app-book>
 
 <div class="test">
   <h1>Time Remaing to bid : {{message}}</h1>
@@ -11,7 +10,6 @@
 [bids]="bids"></app-bid>
 
 <div class="form-group">
-  <label for="bd">Bid:</label>
   <input type="number" [(ngModel)]="bidamount" class="form-control" id="bd">
 </div>
 <button type="submit" (click)="bid()" class="btn btn-primary">Bid!</button>

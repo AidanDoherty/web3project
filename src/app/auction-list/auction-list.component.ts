@@ -32,7 +32,7 @@ export class AuctionListComponent implements OnInit {
 
 
   getBook() {
-    this._auction.getBook().subscribe(book =>
+    this._auction.getBook("ha").subscribe(book =>
       book[0])
   }
 

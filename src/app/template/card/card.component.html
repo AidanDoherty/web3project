@@ -1,0 +1,13 @@
+<div class="card">
+  <!-- <img class="card-img-top" [attr.src]="data.img"> -->
+  <div class="card-body">
+
+      <img [src]="book.imgscr">
+   <h4 class="card-title">{{book.bookname}}</h4>
+    <p class="card-text">Current Bid: €{{currentbid}} </p>
+    <br>
+    <a>Time Remaining: {{data.EndDate}} </a>
+    <br>
+    <button onclick="setAuction()" [routerLink]="[ '/auction', data.id ]">Go to Auction</button>
+  </div>
+</div>

@@ -5,13 +5,20 @@ import { IAuction } from '../interface/iauction';
 import { Ibook } from '../book/IBook';
 import { Ibid } from '../auction/IBid';
 import * as firebase from 'firebase';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuctionService {
 
-  constructor(private db: AngularFirestore) { }
+  constructor(private db: AngularFirestore, private _auth: AngularFireAuth) { }
+
+
+  currentAuction: IAuction
+  CurrentHighistBid
+
+  
 
   getAuctionlist() {
     return this.db.collection<IAuction>('Auctions').snapshotChanges()
@@ -29,14 +36,19 @@ export class AuctionService {
   addBid(id:string, bidamountd:number)
   {
     return this.db.collection<Ibid>('Auctions/'+ id+'/Bids').add({
-      createdby: firebase.auth().currentUser.email,
+      createdby: firebase.auth().currentUser.displayName,
       bidAmount: bidamountd
     })
   }
 
 
-  getBook() {
+  getBook(id: string) {
 
-    return this.db.collection<Ibook>('Books').doc('9bhXGB2sNEMlAYjssr5S').valueChanges()
+    return this.db.collection<Ibook>('Auctions/'+ "1"+'/book').valueChanges()
+  }
+
+  getCurrentUsersAuctions()
+  {
+    return this.db.collection<IAuction>('Auctions', acution=> acution.where("createdby","==",this._auth.auth.currentUser.uid)).valueChanges()
   }
 }

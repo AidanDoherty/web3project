@@ -26,7 +26,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
 import { MatButtonModule,MatCardModule,MatFormFieldModule,
 MatInputModule,MatToolbarModule,MatListModule,MatProgressSpinnerModule} from '@angular/material';
-import { AuctionListComponent } from './auction-list/auction-list.component'
+import { AuctionListComponent } from './auction-list/auction-list.component';
+import { CardComponent } from './template/card/card.component'
 
 
 export const rootRouterConfig: Routes = [
@@ -55,7 +56,8 @@ export const rootRouterConfig: Routes = [
     AuctionComponent,
     BidComponent,
     SignupComponent,
-    AuctionListComponent
+    AuctionListComponent,
+    CardComponent
   ],
   imports: [
     FormsModule, 
@@ -80,6 +82,7 @@ export const rootRouterConfig: Routes = [
   ],
   exports: [ RouterModule, ],
   providers: [ AuthService, AuthGuard, NotificationService, AngularFireAuth, AngularFirestore],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CardComponent]
 })
 export class AppModule { }

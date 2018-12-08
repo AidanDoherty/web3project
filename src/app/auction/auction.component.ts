@@ -45,7 +45,7 @@ id
     })
 
     this._auctionservice.getAuction(this.id).subscribe(data=>
-      console.log(data.data()))
+      this.auctiondetails = data.data() as IAuction)
     
     this._auctionservice.getBids(this.id).subscribe(data=>
       console.log(this.bids = data))
@@ -77,7 +77,7 @@ id
 
   }
   bid() {
-    this._auctionservice.addBid('1', this.bidamount)
+    this._auctionservice.addBid(this.id, this.bidamount)
   }
 
 
