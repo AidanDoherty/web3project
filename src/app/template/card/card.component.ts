@@ -15,17 +15,16 @@ export class CardComponent implements OnInit {
  @Input() hidebutton: boolean
 @Input() auctionid
  testdata
- currentbid = 0
+ currentbid
  
   
 
   ngOnInit() {
- console.log(this.auctionid)
 
     if(!this.auctionid)
     {
     this._auctionservice.getBids(this.data.id).subscribe(data =>
-      this.currentbid = data[0].bidAmount)
+    this.currentbid = data[0].bidAmount)
     }
      if(this.auctionid)
      {
@@ -37,10 +36,7 @@ export class CardComponent implements OnInit {
         this.currentbid = data[0].bidAmount)
   
      }
-    this.testdata = {
-      bookname: "Test Name",
-      currentbid: 100
-    }
+    
 
 
   }

@@ -9,8 +9,6 @@
 <app-bid [bids]="bids"></app-bid>
 
 
+<p>{{biderror}}</p>
 <input type="number" [(ngModel)]="bidamount">
-
 <button (click)="Addbid()" class="btn btn-primary">Bid!</button>
-
-{{bidamount}}
