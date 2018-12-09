@@ -20,5 +20,6 @@
 </mat-card>
 
 Your Auctions:
-
-<app-book data=[usersAuctions]></app-book>
+<div class="card-columns">
+<app-book *ngFor="let item of usersAuctions" [data]="item"></app-book>
+</div>

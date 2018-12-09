@@ -32,7 +32,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
 
      this._auctionService.getCurrentUsersAuctions().subscribe(data=>
-      this.usersAuctions = data)
+      this.usersAuctions = data as IAuction[])
     
   }
 }

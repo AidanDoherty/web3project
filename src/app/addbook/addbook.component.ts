@@ -4,6 +4,7 @@ import { Ibook } from '../book/IBook';
 import { Router } from '@angular/router';
 import { IAuction } from '../interface/iauction';
 import { AuctionService } from '../service/auction.service';
+import { FirebaseAuth } from '@angular/fire';
 @Component({
   selector: 'app-addbook',
   templateUrl: './addbook.component.html',
@@ -50,7 +51,7 @@ export class AddbookComponent implements OnInit {
   }
   addbook(): void {
     this.auction = {
-    createdby: 2,
+    createdby: this._auctionservice.getUserID(),
     bookname: this.bookname,
     auther: this.auther,
     description: this.description,

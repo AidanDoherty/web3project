@@ -63,4 +63,9 @@ export class AuctionService {
       console.log("Auction Added")
     )
   }
+
+  getUserID()
+  {
+    return this._auth.auth.currentUser.uid
+  }
 }
