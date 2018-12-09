@@ -1,4 +1,4 @@
-<form>
+<form *ngIf="!hasbookdetails">
     <div class="box">
         <div class="form-group row">
             <div class="col-3">
@@ -59,4 +59,22 @@
         <button (click)="addbook()"class="btn">Submit</button>
     </div>
 
+</form>
+
+<form *ngIf="hasbookdetails">
+<app-card></app-card>
+
+<h1>Auction Details</h1>
+    <div class="form-group row">
+        <div class="col-3">
+            <label for="ex1">End Date:</label>
+            <input class="form-control" id="ex1" placeholder="e.g $50" type="text"[(ngModel)]='enddate' name="reserve">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-3">
+            <label for="ex1">Satarting Bid:</label>
+            <input class="form-control" id="ex1" placeholder="e.g $50" type="text"[(ngModel)]='startingbid' name="reserve">
+        </div>
+    </div>
 </form>

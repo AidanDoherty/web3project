@@ -12,22 +12,31 @@ export class CardComponent implements OnInit {
 
   constructor(private _auctionservice: AuctionService) { }
   @Input() data: IAuction;
- book:Ibook = new Ibook
+ @Input() hidebutton: boolean
+@Input() auctionid
  testdata
  currentbid = 0
-
+ 
   
 
   ngOnInit() {
+ console.log(this.auctionid)
 
-    this._auctionservice.getBids("1").subscribe(data =>
+    if(!this.auctionid)
+    {
+    this._auctionservice.getBids(this.data.id).subscribe(data =>
       this.currentbid = data[0].bidAmount)
+    }
+     if(this.auctionid)
+     {
 
-    this._auctionservice.getBook("1").subscribe(data =>
-     this.book = data[0])
+      this._auctionservice.getAuction(this.auctionid).subscribe(data=>
+       this.data = data.payload.data() as IAuction )
 
-     
-     
+      this._auctionservice.getBids(this.auctionid).subscribe(data =>
+        this.currentbid = data[0].bidAmount)
+  
+     }
     this.testdata = {
       bookname: "Test Name",
       currentbid: 100
@@ -36,24 +45,13 @@ export class CardComponent implements OnInit {
 
   }
 
-  function(endtime: Date) {
-    var t = endtime.valueOf() - Date.now();
-    var seconds = Math.floor((t / 1000) % 60);
-    var minutes = Math.floor((t / 1000 / 60) % 60);
-    var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
-    var days = Math.floor(t / (1000 * 60 * 60 * 24));
-    return {
-      'total': t,
-      'days': days,
-      'hours': hours,
-      'minutes': minutes,
-      'seconds': seconds
-    };
-  }
-
-  setAuction()
+  
+  
+  test()
     {
-      console.log("Auction Set")
-      this._auctionservice.currentAuction = this.data
+      this._auctionservice.setAuction().subscribe(data => 
+        data.payload.data()
+      )
+        
     }
 }

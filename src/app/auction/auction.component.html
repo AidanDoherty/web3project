@@ -1,15 +1,16 @@
-<app-book data=[auctiondetails]></app-book>
+<app-card [data]="auctiondetails" [hidebutton]="true" [auctionid]="id"></app-card>
 
-<div class="test">
-  <h1>Time Remaing to bid : {{message}}</h1>
+<div class="test"> 
+
   <img src="http://www.opiitalia.it/wp-content/uploads/2015/03/nlr53_anaffairinredsquare_color.png" width="{{message * 30}}"
     height="30px">
 
 </div>
-<app-bid 
-[bids]="bids"></app-bid>
+<app-bid [bids]="bids"></app-bid>
 
-<div class="form-group">
-  <input type="number" [(ngModel)]="bidamount" class="form-control" id="bd">
-</div>
-<button type="submit" (click)="bid()" class="btn btn-primary">Bid!</button>
+
+<input type="number" [(ngModel)]="bidamount">
+
+<button (click)="Addbid()" class="btn btn-primary">Bid!</button>
+
+{{bidamount}}

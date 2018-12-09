@@ -23,9 +23,14 @@ export class AuctionService {
   getAuctionlist() {
     return this.db.collection<IAuction>('Auctions').snapshotChanges()
   }
+  
+  setAuction()
+  {
+    return this.db.collection<IAuction>('Auctions').doc("IpEqMeaZBjlfOL492GcC").snapshotChanges()
+  }
 
   getAuction(id: string) {
-    return this.db.collection<IAuction>('Auctions').doc(id).get()
+    return this.db.collection<IAuction>('Auctions').doc(id).snapshotChanges()
   }
 
   getBids(id:string) {
@@ -44,11 +49,18 @@ export class AuctionService {
 
   getBook(id: string) {
 
-    return this.db.collection<Ibook>('Auctions/'+ "1"+'/book').valueChanges()
+    return this.db.collection<Ibook>('Auctions/'+ id+'/book').valueChanges()
   }
 
   getCurrentUsersAuctions()
   {
     return this.db.collection<IAuction>('Auctions', acution=> acution.where("createdby","==",this._auth.auth.currentUser.uid)).valueChanges()
+  }
+
+  addAuction(auction: IAuction)
+  {
+    this.db.collection<IAuction>('Auctions').add(auction).then(a=>
+      console.log("Auction Added")
+    )
   }
 }

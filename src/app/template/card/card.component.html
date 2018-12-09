@@ -2,12 +2,12 @@
   <!-- <img class="card-img-top" [attr.src]="data.img"> -->
   <div class="card-body">
 
-      <img [src]="book.imgscr">
-   <h4 class="card-title">{{book.bookname}}</h4>
+      <img [src]="data.imgsrc">
+   <h4 class="card-title">{{data.bookname}}</h4>
     <p class="card-text">Current Bid: €{{currentbid}} </p>
     <br>
     <a>Time Remaining: {{data.EndDate}} </a>
     <br>
-    <button onclick="setAuction()" [routerLink]="[ '/auction', data.id ]">Go to Auction</button>
+    <button *ngIf="!hidebutton" [routerLink]="[ '/auction', data.id ]">Go to Auction</button>
   </div>
 </div>
