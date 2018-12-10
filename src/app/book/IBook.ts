@@ -7,4 +7,5 @@ export class Ibook {
     imgsrc:string;
     publisher:string
     userid:string;
+    condition:string;
 }

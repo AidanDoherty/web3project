@@ -28,7 +28,7 @@ export class AddbookComponent implements OnInit {
   errorMessage: string;
   auction: IAuction;
   endDate:string;
-
+  condition:string;
 
 
   ngOnInit() {
@@ -47,7 +47,7 @@ export class AddbookComponent implements OnInit {
     this.imgsrc = newbook.imgsrc;
     this.bookname = newbook.bookname;
     this.publisher = newbook.publisher;
-  
+   this.condition = newbook.condition;
     return false;
     
   }
@@ -59,7 +59,9 @@ export class AddbookComponent implements OnInit {
     description: this.description,
     imgsrc: this.imgsrc,
     publisher: this.publisher,
-    EndDate: Date.parse(this.endDate)
+    condition : this.condition,
+    EndDate: Date.parse(this.endDate),
+   
     }
     console.log(this.auction, this.reserve,this.endDate)
 

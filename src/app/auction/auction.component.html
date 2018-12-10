@@ -1,13 +1,9 @@
 <app-card [hidebutton]="true" [auctionid]="id"></app-card>
 
-<div class="test"> 
 
-  <!-- <img src="http://www.opiitalia.it/wp-content/uploads/2015/03/nlr53_anaffairinredsquare_color.png" width="{{message * 30}}"
-    height="30px"> -->
-
-</div>
 <app-bid [bids]="bids"></app-bid>
-
+<div class="center">
 <p>{{biderror}}</p>
 <input type="number" [(ngModel)]="bidamount" >
 <button (click)="Addbid()" class="btn btn-primary">Add Bid</button>
+</div>
