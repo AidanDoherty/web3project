@@ -54,7 +54,7 @@ export class AuctionService {
 
   getCurrentUsersAuctions()
   {
-    return this.db.collection<IAuction>('Auctions', acution=> acution.where("createdby","==",this._auth.auth.currentUser.uid)).valueChanges()
+    return this.db.collection<IAuction>('Auctions', acution=> acution.where("createdby","==",this._auth.auth.currentUser.uid)).snapshotChanges()
   }
 
   addAuction(auction: IAuction)
