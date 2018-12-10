@@ -14,7 +14,9 @@ import { FirebaseAuth } from '@angular/fire';
 export class AddbookComponent implements OnInit {
   hasbookdetails: boolean;
 
-  constructor(private _auctionservice:AuctionService, private _BookserviceService: BookserviceService, private myRoute: Router) { }
+  constructor(private _auctionservice:AuctionService,
+     private _BookserviceService: BookserviceService, 
+     private myRoute: Router) { }
 
   bookId: number;
   bookname: string;
@@ -36,6 +38,7 @@ export class AddbookComponent implements OnInit {
   }
 
   showbook(): boolean {
+    
     this.showdisplaybook = !this.showdisplaybook;
     return false;
   }
@@ -67,8 +70,10 @@ export class AddbookComponent implements OnInit {
 
     this._auctionservice.addAuction(this.auction, this.reserve)
 
-
+alert("you added the book: " + this.auction.bookname)
+this.myRoute.navigate(['profile'])
   }
+
 
   addAuction()
   {
