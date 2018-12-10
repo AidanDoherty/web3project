@@ -1,44 +1,41 @@
-  <html>
-  <body>
-  <div class="bg"  >
-  <div class="container">
-  <h1 class="form-heading">UserLogin</h1>
-  <div class="login-form">
-  <div class="main-div">
-      <div class="panel">
-    
-     <p>Please enter your email and password</p>
-     </div>
-     <form class="my-form" [formGroup]="form" (ngSubmit)="login()">
-       
-          <label>Email </label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  formControlName="email" placeholder="Enter email">
-       
-        <div class="form-group">
-            <label>Password </label>
-            <input type="password" class="form-control" id="password" aria-describedby="emailHelp" formControlName="password" placeholder="Enter Password">
-          </div>
-      
-          <div class="forgot">
-          <a href="reset.html">Forgot password?</a>
-  </div>
-          <button (click)="login()" class="btn btn-primary">Login</button>
-          <button (click)="signup()" class="btn btn-primary" style="margin-left:5px">Sign Up</button>
-  
+<html>
+<body>
+  <div class="bg">
+    <div class="container">
+      <h1 class="form-heading">UserLogin</h1>
+      <div class="login-form">
+        <div class="main-div">
+          <div class="panel">
 
-          <div>
-            <img src="../../assets/google.png" height="50px" (click)="doGoogleLogin()">
-            <img src="../../assets/facebook.png" height="50px" float="right" (click)="doFaceBookLogin() ">
+            <p>Please enter your email and password</p>
           </div>
-       
-           
-            
-         
-      </form>
+          <form class="my-form" [formGroup]="form" (ngSubmit)="login()">
+
+            <label>Email </label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              formControlName="email" placeholder="Enter email">
+
+            <div class="form-group">
+              <label>Password </label>
+              <input type="password" class="form-control" id="password" aria-describedby="emailHelp" formControlName="password"
+                placeholder="Enter Password">
+            </div>
+
+            <div class="forgot">
+              <a href="reset.html">Forgot password?</a>
+            </div>
+            <button (click)="login()" class="btn btn-primary">Login</button>
+            <button (click)="signup()" class="btn btn-primary" style="margin-left:5px">Sign Up</button>
+
+
+            <div>
+              <img src="../../assets/google.png" height="50px" (click)="doGoogleLogin()">
+              <img src="../../assets/facebook.png" height="50px" float="right" (click)="doFaceBookLogin() ">
+            </div>
+          </form>
+        </div>
       </div>
-
+    </div>
   </div>
-</div>
-</div>
 </body>
 </html>

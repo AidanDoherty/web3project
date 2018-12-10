@@ -9,22 +9,16 @@ import { Observable } from 'rxjs';
   templateUrl: './bid.component.html',
   styleUrls: ['./bid.component.css']
 })
+/* This component is mainly used to display the bids*/ 
 export class BidComponent implements OnInit {
+  //Declares the bid varibles
   BidID:number;
   UserID:string;
   Price:number;
+  //This is where the component receives the bids it displays
   @Input() bids:Ibid[]
   constructor(private _afs:FirestoreService, private afauth:AngularFireAuth) {
    }
-
   ngOnInit():void {
-    
-
-  }
-  
-
-  addBid(){
-   
-    
   }
 }

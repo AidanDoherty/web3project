@@ -1,19 +1,22 @@
-<form class="my-form" [formGroup]="form" (ngSubmit)="signup()" >
-  <mat-card class="text-center"> 
-  <mat-card-content >
-  <div class="form-group">
-    <label for="exampleInputEmail1" style="font-size:20px">Email </label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  formControlName="email" placeholder="Enter email">
-  </div>
-  <div class="form-group">
-      <label for="password" style="font-size:20px">Password </label>
-      <input type="password" class="form-control" id="password" aria-describedby="emailHelp" formControlName="password" placeholder="Enter Password">
-    </div>
-    <div class="form-group">
-      <label for="name" style="font-size:20px">Name </label>
-      <input type="text" class="form-control" id="name" aria-describedby="emailHelp" formControlName="name" placeholder="Enter Username">
-    </div>
+<form class="my-form" [formGroup]="form" (ngSubmit)="signup()">
+  <mat-card class="text-center">
+    <mat-card-content>
+      <div class="form-group">
+        <label for="exampleInputEmail1" style="font-size:20px">Email </label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="email"
+          placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <label for="password" style="font-size:20px">Password </label>
+        <input type="password" class="form-control" id="password" aria-describedby="emailHelp" formControlName="password"
+          placeholder="Enter Password">
+      </div>
+      <div class="form-group">
+        <label for="name" style="font-size:20px">Name </label>
+        <input type="text" class="form-control" id="name" aria-describedby="emailHelp" formControlName="name"
+          placeholder="Enter Username">
+      </div>
 
-    <button (click)="signup()" class="btn btn-primary">Sign Up</button>
+      <button (click)="signup()" class="btn btn-primary">Sign Up</button>
     </mat-card-content>
   </mat-card>

@@ -18,7 +18,7 @@ export class SignupComponent implements OnInit {
       password: ['', Validators.required],
       name: ['', Validators.required]
     });
-   }
+  }
 
   ngOnInit() {
   }
