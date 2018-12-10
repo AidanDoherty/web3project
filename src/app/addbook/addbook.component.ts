@@ -4,6 +4,7 @@ import { Ibook } from '../book/IBook';
 import { Router } from '@angular/router';
 import { IAuction } from '../interface/iauction';
 import { AuctionService } from '../service/auction.service';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { FirebaseAuth } from '@angular/fire';
 @Component({
   selector: 'app-addbook',
@@ -26,6 +27,7 @@ export class AddbookComponent implements OnInit {
   publisher:string;
   errorMessage: string;
   auction: IAuction;
+  endDate:string;
 
 
 
@@ -57,9 +59,9 @@ export class AddbookComponent implements OnInit {
     description: this.description,
     imgsrc: this.imgsrc,
     publisher: this.publisher,
-    EndDate: Date.parse("1/1/2020")
+    EndDate: Date.parse(this.endDate)
     }
-    console.log(this.auction, this.reserve)
+    console.log(this.auction, this.reserve,this.endDate)
 
     this._auctionservice.addAuction(this.auction, this.reserve)
 

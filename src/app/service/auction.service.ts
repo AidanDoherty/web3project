@@ -20,6 +20,7 @@ export class AuctionService {
 
   
 
+
   getAuctionlist() {
     return this.db.collection<IAuction>('Auctions').snapshotChanges()
   }

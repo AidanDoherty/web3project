@@ -9,5 +9,6 @@
     <a>Time Remaining: </a>
     <br>
     <button *ngIf="!hidebutton" [routerLink]="[ '/auction', data.id ]">Go to Auction</button>
+    <button (click)='calculateTime()'>Time</button>
   </div>
 </div>

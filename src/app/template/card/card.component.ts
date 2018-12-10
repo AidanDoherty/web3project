@@ -16,7 +16,7 @@ export class CardComponent implements OnInit {
 @Input() auctionid
  testdata
  currentbid
- 
+ timeremaining
 
   ngOnInit() {
 
@@ -40,7 +40,11 @@ export class CardComponent implements OnInit {
 
   }
 
-  
+  calculateTime()
+  {
+    this.timeremaining = this.data.EndDate -  Date.now()
+    console.log(this.timeremaining)
+  }
   
   test()
     {
