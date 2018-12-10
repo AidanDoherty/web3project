@@ -6,7 +6,7 @@
    <h4 class="card-title">{{data.bookname}}</h4>
     <p class="card-text">Current Bid: €{{currentbid}} </p>
     <br>
-    <a>Time Remaining: {{timeremaining| date: "HH:mm:ss"}} </a>
+    <a>{{displayTime}} Days Remaining </a>
     <br>
     <button *ngIf="!hidebutton" [routerLink]="[ '/auction', data.id ]">Go to Auction</button>
   </div>

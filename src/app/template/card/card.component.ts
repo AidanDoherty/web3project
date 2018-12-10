@@ -18,6 +18,7 @@ export class CardComponent implements OnInit {
   testdata
   currentbid
   timeremaining
+  displayTime:number
 
   ngOnInit() {
 
@@ -32,20 +33,15 @@ export class CardComponent implements OnInit {
 
       this._auctionservice.getBids(this.auctionid).subscribe(data =>
         this.currentbid = data[0].bidAmount)
-
-      this.timeremaining = new Observable<string>((observer: Observer<string>) => {
-        setInterval(() => observer.next(new Date().toString()), 1000);
-      });
-
-      
-      this._auctionservice.test2().subscribe(data=> 
-       console.log(data ))
-
         
      }
      interval(1000).subscribe(data=>
-      this.timeremaining= this.data.EndDate - Date.now()
+      this.updateTime()
       )
+  }
+  updateTime(){
+    this.timeremaining= this.data.EndDate-Date.now();
+    this.displayTime=Math.round(this.timeremaining/(1000*60*60*24));
   }
 
   test() {
