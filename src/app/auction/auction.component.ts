@@ -28,7 +28,7 @@ export class AuctionComponent implements OnInit {
   bidamount:number;
   bids: Ibid[]
   biderror
-  
+  topBid:number;
   ngOnInit() {
     
     this.bidamount=0
@@ -45,22 +45,28 @@ export class AuctionComponent implements OnInit {
   }
  
   Addbid(): boolean {
+    if (this.topBid!= null) {
+    this.topBid=this.bids[0].bidAmount;
+
     
-    console.log(this.bidamount,this.id)
+      if (this.bidamount > this.topBid) {
+        this._auctionservice.addBid(this.id, this.bidamount);
 
-    if(this.bidamount>this.bids[0].bidAmount)
-    {
-    this._auctionservice.addBid(this.id,this.bidamount)
+        this.biderror = ""
+      }
+      else {
+        this.biderror = "Bid not high enough, Try Again"
+      }
+    }
+    else {
+      this._auctionservice.addBid(this.id, this.bidamount);
+    }
+    console.log(this.bidamount, this.id)
 
-    this.biderror = ""
-    }
-    else
-    {
-      this.biderror = "Bid not high enough, Try Again"
-    }
+    this.topBid=this.bids[0].bidAmount;
+    console.log(this.topBid)
     return false
   }
-
 
 
 

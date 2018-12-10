@@ -13,7 +13,7 @@ export class BidComponent implements OnInit {
   BidID:number;
   UserID:string;
   Price:number;
-  bidAmount:number;
+  @Input() bids:Ibid[]
   constructor(private _afs:FirestoreService, private afauth:AngularFireAuth) {
    }
 
@@ -24,7 +24,7 @@ export class BidComponent implements OnInit {
   
 
   addBid(){
-   console.log(this.bids)
+   
     
   }
 }
