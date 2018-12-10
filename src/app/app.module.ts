@@ -29,6 +29,7 @@ MatInputModule,MatToolbarModule,MatListModule,MatProgressSpinnerModule,MatNative
 import { AuctionListComponent } from './auction-list/auction-list.component';
 import { CardComponent } from './template/card/card.component'
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { DetailsComponent } from './template/details/details.component';
 
 
 export const rootRouterConfig: Routes = [
@@ -58,7 +59,8 @@ export const rootRouterConfig: Routes = [
     BidComponent,
     SignupComponent,
     AuctionListComponent,
-    CardComponent
+    CardComponent,
+    DetailsComponent
   ],
   imports: [
     FormsModule, 

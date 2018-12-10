@@ -1,0 +1,17 @@
+<div class="card" >
+    <!-- <img class="card-img-top" [attr.src]="data.img"> -->
+    <div class="card-body">
+  
+      
+    
+     <h4 class="card-title">Book Author : </h4><p>{{data.auther}} </p>
+     <h4 class="card-title">Description:</h4>
+     <p> {{data.description}} </p>
+     <h4 class="card-title">Publisher : </h4>
+     <p>{{data.publisher}}</p>
+     <h4 class="card-title">Condition: </h4>
+     <p>{{data.condition}} </p>
+      <button class="btn btn-primary" *ngIf="!hidebutton" [routerLink]="[ '/auction', data.id ]">Go to Auction</button>
+    </div>
+
+  </div>

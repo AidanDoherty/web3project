@@ -13,11 +13,7 @@ import { BookComponent } from '../book/book.component';
 export class AuctionListComponent implements OnInit {
 
   constructor(private _auction: AuctionService) { }
-  auctionlist: IAuction[]
-  testaer
-
-
-
+  auctionlist: IAuction[];
   ngOnInit() {
     this._auction.getAuctionlist().subscribe(data => {
       this.auctionlist = data.map(e => {
@@ -26,7 +22,7 @@ export class AuctionListComponent implements OnInit {
           ...e.payload.doc.data()
         }
       })
-    } )
+    })
   }
 
 

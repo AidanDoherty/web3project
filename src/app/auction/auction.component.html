@@ -1,9 +1,20 @@
-<app-card [hidebutton]="true" [auctionid]="id"></app-card>
 
+
+
+
+
+<div class="grid-container">
+<div class="grid-item">
+<app-card [hidebutton]="true" [auctionid]="id"></app-card>
+</div>
+<div class="grid-item">
+<app-details [hidebutton]="true" [auctionid]="id" ></app-details>
+</div>
+
+</div>
 
 <app-bid [bids]="bids"></app-bid>
 <div class="center">
 <p>{{biderror}}</p>
 <input type="number" [(ngModel)]="bidamount" >
 <button (click)="Addbid()" class="btn btn-primary">Add Bid</button>
-</div>

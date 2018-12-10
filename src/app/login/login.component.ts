@@ -67,6 +67,7 @@ export class LoginComponent implements OnInit {
       }, err => {
         //if there is an error it will alert the error to the user
         console.log(err);
+        alert(err);
         this.errorMessage = err.message;
       })
   }
@@ -80,6 +81,7 @@ export class LoginComponent implements OnInit {
       }, err => {
          //if there is an error it will alert the error to the user
         console.log(err);
+        alert(err);
         this.errorMessage = err.message;
       })
   }
