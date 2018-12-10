@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
       then(res => {
         this.myRoute.navigate(['home']);
       }, err => {
-        console.log(err);
+        alert(err);
         this.errorMessage = err.message;
       })
   }
@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
       then(res => {
         this.myRoute.navigate(['home']);
       }, err => {
-        console.log(err);
+        alert(err);
         this.errorMessage = err.message;
       })
   }

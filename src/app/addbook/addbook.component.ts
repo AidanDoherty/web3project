@@ -65,6 +65,9 @@ export class AddbookComponent implements OnInit {
     condition : this.condition,
     EndDate: Date.parse(this.endDate),
    
+    }, err => {
+      alert(err);
+      this.errorMessage = err.message;
     }
     console.log(this.auction, this.reserve,this.endDate)
 
