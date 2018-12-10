@@ -2,20 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { BookserviceService } from '../bookservice.service'
 import { Ibook } from '../book/IBook';
 import { Router } from '@angular/router';
-import { AuthService } from '../service/auth.service';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { FirestoreService } from '../firestore.service';
+import { IAuction } from '../interface/iauction';
+import { AuctionService } from '../service/auction.service';
+import { FirebaseAuth } from '@angular/fire';
 @Component({
   selector: 'app-addbook',
   templateUrl: './addbook.component.html',
   styleUrls: ['./addbook.component.css']
 })
 export class AddbookComponent implements OnInit {
+  hasbookdetails: boolean;
 
-  constructor(private _BookserviceService: BookserviceService, 
-    private myRoute: Router, 
-    private _auth:AngularFireAuth,
-    private _fs:FirestoreService) { }
+  constructor(private _auctionservice:AuctionService, private _BookserviceService: BookserviceService, private myRoute: Router) { }
+
   bookId: number;
   bookname: string;
   auther: string;
@@ -26,7 +25,12 @@ export class AddbookComponent implements OnInit {
   title:string;
   publisher:string;
   errorMessage: string;
+  auction: IAuction;
+
+
+
   ngOnInit() {
+   
   }
 
   showbook(): boolean {
@@ -46,22 +50,25 @@ export class AddbookComponent implements OnInit {
     
   }
   addbook(): void {
-    let book: Ibook = {
-      bookId: this.bookId,
-      bookname: this.bookname,
-      auther: this.auther,
-      reserve: this.reserve,
-      description: this.description,
-      imgsrc: this.imgsrc,
-      publisher: this.publisher,
-      userid:this._auth.auth.currentUser.uid
-    
+    this.auction = {
+    createdby: this._auctionservice.getUserID(),
+    bookname: this.bookname,
+    auther: this.auther,
+    description: this.description,
+    imgsrc: this.imgsrc,
+    publisher: this.publisher
     }
-    console.log(book)
-    this._BookserviceService.addbook(book);
-      this.myRoute.navigate(['home']);
-    
-    
+    console.log(this.auction)
+
+    this._auctionservice.addAuction(this.auction)
+
+
+  }
+
+  addAuction()
+  {
+
+  
   }
   getid(){
     this._BookserviceService.getbooks() ;

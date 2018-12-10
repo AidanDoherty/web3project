@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
-import {FirestoreService} from '../firestore.service'
-import { BookserviceService } from '../bookservice.service';
+import { IAuction } from '../interface/iauction';
+import { AuctionService } from '../service/auction.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,8 +12,10 @@ export class ProfileComponent implements OnInit {
   displayName:string;
   imageUrl:string;
   changingDetails:boolean=false;
-  userBooks;
-  constructor(private afAuth :AngularFireAuth, private _bs:BookserviceService) { 
+  usersAuctions: IAuction[]
+
+
+  constructor(private _auctionService: AuctionService, private afAuth :AngularFireAuth) { 
     this.displayName=this.afAuth.auth.currentUser.displayName;
     this.imageUrl=this.afAuth.auth.currentUser.photoURL;
     this.userBooks= this._bs.getUserBooks();
@@ -30,6 +32,9 @@ export class ProfileComponent implements OnInit {
     this.changingDetails=!this.changingDetails;
   }
   ngOnInit() {
-    console.log(this.userBooks);
+
+     this._auctionService.getCurrentUsersAuctions().subscribe(data=>
+      this.usersAuctions = data as IAuction[])
+    
   }
 }

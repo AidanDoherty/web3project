@@ -18,3 +18,8 @@
         <button mat-raised-button color="primary" (click)='updateProfile()' >Update</button>
     </mat-card-content>
 </mat-card>
+
+Your Auctions:
+<div class="card-columns">
+<app-book *ngFor="let item of usersAuctions" [data]="item"></app-book>
+</div>

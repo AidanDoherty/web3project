@@ -1,17 +1,2 @@
+<ng-container #container></ng-container>
 
-   <div class="grid-container">
-
-      <div class="grid-item" *ngFor="let book of books">
-   <div fxLayout="row" class="layout" fxLayoutAlign="space-evenly stretch" fxLayoutGap="20px" >
-            <mat-card fxFlex="3 3 calc(15em + 20px)">
-            <img class="image" mat-card-md-image [src]='book.imgsrc' [title]='book.imgsrc'>
-              <mat-card-header>
-                <mat-card-title>Name:   {{book.bookname| slice:0:25}}</mat-card-title>
-                <mat-card-title>Author:   {{book.auther| slice:0:25}}</mat-card-title>
-                <mat-card-title>Reserve:   ${{book.reserve| slice:0:25}}</mat-card-title>
-              </mat-card-header>
-              <button mat-raised-button color="primary">Go to Auction</button>
-            </mat-card>
-   </div>
-          </div>
-          </div>
