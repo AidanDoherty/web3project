@@ -38,15 +38,13 @@ export class AuctionComponent implements OnInit {
       this.id = params['id'];
     })
 
-    this._auctionservice.getBids(this.id).subscribe(data =>
-      console.log(this.bids = data))
-      this.topBid=this.bids[0].bidAmount;
-      console.log(this.bids[0].bidAmount+"Top")
+   
   }
 
   Addbid(): boolean {
-    if (this.topBid!= 0) {
-    
+    this.gettopbid()
+    if (this.topBid!= null) {
+   
       if (this.bidamount > this.topBid) {
         this._auctionservice.addBid(this.id, this.bidamount);
 
@@ -64,6 +62,16 @@ export class AuctionComponent implements OnInit {
     this.topBid=this.bids[0].bidAmount;
     console.log(this.topBid)
     return false
+  }
+  gettopbid()
+  {
+
+     this._auctionservice.getBids(this.id).subscribe(data =>
+      console.log(this.bids = data))
+      this.topBid=this.bids[0].bidAmount;
+     
+      return this.topBid
+      
   }
 
 
