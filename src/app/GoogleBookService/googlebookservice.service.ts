@@ -13,6 +13,7 @@ export class GooglebookserviceService {
   constructor(private _http: HttpClient) {
 
   }
+  // this is the mapping of the api's json into variables
   getTitleList(title: string ): Observable<IGoogleBook> {
     return this._http.get<IGoogleBook>(this.url + title)
   }

@@ -19,6 +19,7 @@ export class ProfileComponent implements OnInit {
     this.displayName = this.afAuth.auth.currentUser.displayName;
     this.imageUrl = this.afAuth.auth.currentUser.photoURL;
   }
+  // profile checks for updates on the current user and updates or edits them accordly using there UID (unique user id)
   updateProfile(name: string, image: string) {
     if (this.displayName != null) {
       this.afAuth.auth.currentUser.updateProfile({ displayName: this.displayName, photoURL: this.imageUrl });

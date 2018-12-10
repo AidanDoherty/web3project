@@ -27,7 +27,7 @@ export class NavbarComponent implements OnInit {
     )
      
   }
- 
+ /* this is a basic nav bar , it has a navgaurd which restricts access to to the tabs based on authenticated status */
  ngOnInit() {
 
   this.authenticated = this.auth.isLoggedIn()

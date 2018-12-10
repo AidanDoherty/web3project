@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  /*the following is the diffrent login methoods Google and Facebook use OAuth2 login */
   login() {
     console.log(this.form.value)
     this.auth.doLogin(this.form.value).then(res => {

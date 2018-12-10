@@ -17,3 +17,4 @@ export interface imageLinks{
 export interface IAuthor{
     authors:string;
 }
+/*this is the mapping of the google book */ 

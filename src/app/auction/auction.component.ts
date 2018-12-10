@@ -46,6 +46,7 @@ export class AuctionComponent implements OnInit {
   }
 
   Addbid(): boolean {
+    
     this.topBid=this.bids[0].bidAmount;
     if (this.topBid!= null) {
       if (this.bidamount > this.topBid) {

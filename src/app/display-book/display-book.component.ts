@@ -27,6 +27,10 @@ export class DisplayBookComponent implements OnInit {
     });
   }
 
+
+  /*This Selects the book from the api and creates into a book type to be edited in the create book section
+  the book is emmited to be taken in by another component 
+  */
   selectbook(title,authors,publisher,description,url ):boolean{
     let book: Ibook = {
       bookId: 0,

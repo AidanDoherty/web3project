@@ -13,3 +13,4 @@ export interface IAuction {
     Bids?: Ibid[]
 }
 
+/*Creating an interface for auction */
