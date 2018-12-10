@@ -25,9 +25,10 @@ import { NotificationService } from './service/notification.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
 import { MatButtonModule,MatCardModule,MatFormFieldModule,
-MatInputModule,MatToolbarModule,MatListModule,MatProgressSpinnerModule} from '@angular/material';
+MatInputModule,MatToolbarModule,MatListModule,MatProgressSpinnerModule,MatNativeDateModule} from '@angular/material';
 import { AuctionListComponent } from './auction-list/auction-list.component';
 import { CardComponent } from './template/card/card.component'
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 export const rootRouterConfig: Routes = [
@@ -71,9 +72,11 @@ export const rootRouterConfig: Routes = [
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
+    MatDatepickerModule,
     MatInputModule,
     MatToolbarModule,MatListModule,
     MatProgressSpinnerModule,
+    MatNativeDateModule,
     BrowserModule,
     RouterModule.forRoot(rootRouterConfig),
     HttpClientModule,
