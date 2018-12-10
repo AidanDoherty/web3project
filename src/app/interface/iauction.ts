@@ -11,5 +11,6 @@ export interface IAuction {
     imgsrc:string;
     publisher:string
     Bids?: Ibid[]
+    EndDate: number
 }
 

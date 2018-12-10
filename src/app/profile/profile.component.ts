@@ -32,14 +32,12 @@ export class ProfileComponent implements OnInit {
 
     this._auctionService.getCurrentUsersAuctions().subscribe(data =>
      
-     console.log(data)
-     
-      // this.usersAuctions = data.map(e => {
-      //   return {
-      //     id: e.payload.doc.id,
-      //     ...e.payload.doc.data()
-      //   }
-      // })
+      this.usersAuctions = data.map(e => {
+        return {
+          id: e.payload.doc.id,
+          ...e.payload.doc.data()
+        }
+      })
     
   )}
 

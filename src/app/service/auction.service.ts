@@ -57,10 +57,12 @@ export class AuctionService {
     return this.db.collection<IAuction>('Auctions', acution=> acution.where("createdby","==",this._auth.auth.currentUser.uid)).snapshotChanges()
   }
 
-  addAuction(auction: IAuction)
+  addAuction(auction: IAuction, startingbid:number)
   {
+    console.log(startingbid)
     this.db.collection<IAuction>('Auctions').add(auction).then(a=>
-      console.log("Auction Added")
+      this.addBid(a.id, startingbid)
+      
     )
   }
 

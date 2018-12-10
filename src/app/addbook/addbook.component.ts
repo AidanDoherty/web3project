@@ -56,11 +56,12 @@ export class AddbookComponent implements OnInit {
     auther: this.auther,
     description: this.description,
     imgsrc: this.imgsrc,
-    publisher: this.publisher
+    publisher: this.publisher,
+    EndDate: Date.parse("1/1/2020")
     }
-    console.log(this.auction)
+    console.log(this.auction, this.reserve)
 
-    this._auctionservice.addAuction(this.auction)
+    this._auctionservice.addAuction(this.auction, this.reserve)
 
 
   }
