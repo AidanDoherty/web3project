@@ -11,6 +11,7 @@ import {Ibid} from './auction/IBid'
 export class FirestoreService {
 
   bidCollection: AngularFirestoreCollection<Ibid>;
+  counter: AngularFirestoreCollection;
   Bids: Observable<Ibid[]>;
 
   allbids: Ibid[];
@@ -18,14 +19,16 @@ export class FirestoreService {
 
   constructor(private _http: HttpClient, private _afs:AngularFirestore){ 
     this.bidCollection = _afs.collection<Ibid>("Bids");
+    this.counter = _afs.collection("Uniqueidcounter");
   }
-
+  
  getbids():Observable<Ibid[]>{
    this.Bids = this.bidCollection.valueChanges();
    this.Bids.subscribe(data => console.log("getBids()" + data));
    return this.Bids
    
  }
+ 
  addbid(bid:Ibid): void{
    this.bidCollection.add(bid);
  }

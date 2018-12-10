@@ -4,6 +4,7 @@ import { Ibook } from '../book/IBook';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { FirestoreService } from '../firestore.service';
 @Component({
   selector: 'app-addbook',
   templateUrl: './addbook.component.html',
@@ -11,7 +12,10 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class AddbookComponent implements OnInit {
 
-  constructor(private _BookserviceService: BookserviceService, private myRoute: Router, private _auth:AngularFireAuth) { }
+  constructor(private _BookserviceService: BookserviceService, 
+    private myRoute: Router, 
+    private _auth:AngularFireAuth,
+    private _fs:FirestoreService) { }
   bookId: number;
   bookname: string;
   auther: string;
