@@ -17,7 +17,6 @@ export class CardComponent implements OnInit {
  testdata
  currentbid
  
-  
 
   ngOnInit() {
 

@@ -33,22 +33,20 @@ export class AuctionComponent implements OnInit {
   ngOnInit() {
 
     this.bidamount = 0
-
+    this.topBid = 0
     this.route.params.subscribe(params => {
       this.id = params['id'];
     })
 
-    //this._auctionservice.getAuction(this.id).
-
     this._auctionservice.getBids(this.id).subscribe(data =>
       console.log(this.bids = data))
-      
+      this.topBid=this.bids[0].bidAmount;
+      console.log(this.bids[0].bidAmount+"Top")
   }
 
   Addbid(): boolean {
+    if (this.topBid!= 0) {
     
-    this.topBid=this.bids[0].bidAmount;
-    if (this.topBid!= null) {
       if (this.bidamount > this.topBid) {
         this._auctionservice.addBid(this.id, this.bidamount);
 
