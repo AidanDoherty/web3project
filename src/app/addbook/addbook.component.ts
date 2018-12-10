@@ -60,7 +60,7 @@ export class AddbookComponent implements OnInit {
     }
     console.log(this.auction)
 
-    this._auctionservice.addAuction(this.auction)
+    this._auctionservice.addAuction(this.auction,this.reserve)
 
 
   }
