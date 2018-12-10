@@ -6,6 +6,7 @@ import { Ibook } from '../book/IBook';
 import { Ibid } from '../auction/IBid';
 import * as firebase from 'firebase';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -70,5 +71,13 @@ export class AuctionService {
   getUserID()
   {
     return this._auth.auth.currentUser.uid
+  }
+
+
+  test2()
+  {
+    return new Observable<string>((observer) => {
+      setInterval(() => observer.next(Date.now().toString()), 1);
+    });
   }
 }

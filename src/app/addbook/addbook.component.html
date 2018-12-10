@@ -46,19 +46,13 @@
                 <input class="form-control" id="ex1" placeholder="e.g $50" type="text"[(ngModel)]='imgsrc' name="imgsrc" >
             </div>
         </div>
-        <div class="form-group row">
-            <div class="col-3">
-                <label for="ex1">Condition:</label>
-                <input class="form-control" id="ex1" placeholder="e.g Small marks on the back" type="text"[(ngModel)]='condition' name="condition">
-            </div>
-        </div>
         <div class="form-group">
             <label for="exampleFormControlTextarea1">Synopsis:</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" [(ngModel)]='description'name="description" rows="3"></textarea>
         </div>
         <div class="form-group">
             <mat-form-field>
-                <input name="date"matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="endDate">
+                <input name="date" matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="endDate">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
@@ -70,18 +64,3 @@
 
 <form *ngIf="hasbookdetails">
 <app-card></app-card>
-
-<h1>Auction Details</h1>
-    <div class="form-group row">
-        <div class="col-3">
-            <label for="ex1">End Date:</label>
-            <input class="form-control" id="ex1" placeholder="e.g $50" type="text"[(ngModel)]='enddate' name="reserve">
-        </div>
-    </div>
-    <div class="form-group row">
-        <div class="col-3">
-            <label for="ex1">Satarting Bid:</label>
-            <input class="form-control" id="ex1" placeholder="e.g $50" type="text"[(ngModel)]='startingbid' name="reserve">
-        </div>
-    </div>
-</form>
